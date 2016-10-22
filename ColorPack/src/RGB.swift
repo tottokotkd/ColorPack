@@ -9,12 +9,12 @@
 import Foundation
 
 extension Color {
-    init(red: RGB, green: RGB, blue: RGB) {
+    public init(red: RGB, green: RGB, blue: RGB) {
         self.init(red: red.rawValue, green: green.rawValue, blue: blue.rawValue)
     }
 }
 
-enum RGB: Int {
+public enum RGB: Int {
     case v0 = 0
     case v1 = 1
     case v2 = 2
