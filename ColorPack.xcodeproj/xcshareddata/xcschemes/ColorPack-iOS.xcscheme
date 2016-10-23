@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "92E58F991DBC4F710052AEC6"
+               BuildableName = "ColorPackTests.xctest"
+               BlueprintName = "ColorPackTests"
+               ReferencedContainer = "container:ColorPack.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "92DAEDDC1DBB9EDE00098CE5"
+            BuildableName = "ColorPack.framework"
+            BlueprintName = "ColorPack-iOS"
+            ReferencedContainer = "container:ColorPack.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

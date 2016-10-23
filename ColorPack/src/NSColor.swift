@@ -8,12 +8,9 @@
 
 import AppKit
 
-extension NSColor {
-    public convenience init(red: Int, green: Int, blue: Int) {
-        self.init(colorLiteralRed: Float(red) / 255.0, green: Float(green) / 255.0, blue: Float(blue) / 255.0, alpha: 1)
-    }
-}
-
 extension Color {
-    public var toNSColor: NSColor {return NSColor(red: red, green: green, blue: blue)}
+    public var toNSColor: NSColor {
+        let (r, g, b, a) = toFloat
+        return NSColor(colorLiteralRed: r, green: g, blue: b, alpha: a)
+    }
 }
