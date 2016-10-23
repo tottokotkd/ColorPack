@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "92DAEDEA1DBB9F1800098CE5"
                BuildableName = "ColorPack.framework"
-               BlueprintName = "NSColorPack"
+               BlueprintName = "ColorPack-macOS"
                ReferencedContainer = "container:ColorPack.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,7 +47,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "92DAEDEA1DBB9F1800098CE5"
             BuildableName = "ColorPack.framework"
-            BlueprintName = "NSColorPack"
+            BlueprintName = "ColorPack-macOS"
             ReferencedContainer = "container:ColorPack.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,7 +65,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "92DAEDEA1DBB9F1800098CE5"
             BuildableName = "ColorPack.framework"
-            BlueprintName = "NSColorPack"
+            BlueprintName = "ColorPack-macOS"
             ReferencedContainer = "container:ColorPack.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -4,22 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>ColorPack.xcscheme_^#shared#^_</key>
+		<key>ColorPack-iOS.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
-		<key>NSColorPack.xcscheme</key>
+		<key>ColorPack-macOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>UIColorPack.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
