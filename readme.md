@@ -19,7 +19,7 @@ github "tottokotkd/ColorPack" "1.0"
 
 ## use
 
-```
+```swift
 import ColorPack
 
 // init? (RGB)
