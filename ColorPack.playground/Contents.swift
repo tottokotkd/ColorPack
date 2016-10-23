@@ -1,31 +1,9 @@
-# Swift Color Pack
-
-swift color utility
-
-## get 
-
-### manual
-click 'clone or download' 
-
-### Carthage
-
-1. add 'ColorPack' to Cartfile
-
-```
-github "tottokotkd/ColorPack" "1.0"
-```
-
-2. 'carthage update'
-
-## use
-
-```
 import ColorPack
 
 // init? (RGB)
-Color(red: 100, green: 200, blue: 50)?.toUIColor 
+Color(red: 100, green: 200, blue: 50)?.toUIColor
 Color(red: 100, green: 200, blue: 50, alpha: 0.3)?.toUIColor
-Color(red: 100, green: 200, blue: 350)?.toUIColor 
+Color(red: 100, green: 200, blue: 350)?.toUIColor
 Color(red: 100, green: 200, blue: 50, alpha: 1.3)?.toUIColor
 
 // init? (Hex)
@@ -58,9 +36,4 @@ JapaneseColors.ao.toUIColor
 JapaneseColors.藍.toUIColor
 JapaneseColors.sabionando.toUIColor
 JapaneseColors.錆御納戸.toUIColor
-```
 
-![playgroupnd](doc/p1.png)
-
-## License
-MIT

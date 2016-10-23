@@ -23,8 +23,6 @@
 		92E58FC61DBC903B0052AEC6 /* CSS4Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E58FC31DBC8C910052AEC6 /* CSS4Colors.swift */; };
 		92E58FC81DBC9E630052AEC6 /* CrayonColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E58FC71DBC9E630052AEC6 /* CrayonColors.swift */; };
 		92E58FC91DBC9EA10052AEC6 /* CrayonColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E58FC71DBC9E630052AEC6 /* CrayonColors.swift */; };
-		92E58FCB1DBCA0000052AEC6 /* readme.md in Sources */ = {isa = PBXBuildFile; fileRef = 92E58FCA1DBCA0000052AEC6 /* readme.md */; };
-		92E58FCD1DBCA0100052AEC6 /* license.txt in Resources */ = {isa = PBXBuildFile; fileRef = 92E58FCC1DBCA0100052AEC6 /* license.txt */; };
 		92F481E51DBBC44E00C7593B /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DAEE341DBBBD6500098CE5 /* RGB.swift */; };
 		92F481E61DBBC44E00C7593B /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DAEE321DBBBD5300098CE5 /* Hex.swift */; };
 		92F481E71DBBC44E00C7593B /* JapaneseColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DAEE361DBBC0AB00098CE5 /* JapaneseColors.swift */; };
@@ -42,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9271E1E51DBCAEDF00ACFF95 /* ColorPack.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ColorPack.playground; sourceTree = "<group>"; };
 		92DAEDDD1DBB9EDE00098CE5 /* ColorPack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ColorPack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92DAEDEB1DBB9F1800098CE5 /* ColorPack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ColorPack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92DAEE271DBBA56400098CE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +90,7 @@
 		92DAEDD11DBB9EB500098CE5 = {
 			isa = PBXGroup;
 			children = (
+				9271E1E51DBCAEDF00ACFF95 /* ColorPack.playground */,
 				92E58FCC1DBCA0100052AEC6 /* license.txt */,
 				92E58FCA1DBCA0000052AEC6 /* readme.md */,
 				92DAEE251DBBA56400098CE5 /* ColorPack */,
@@ -311,7 +311,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92E58FCD1DBCA0100052AEC6 /* license.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +343,6 @@
 				92E58FA51DBC542A0052AEC6 /* WebSafe.swift in Sources */,
 				92E58FC41DBC8C910052AEC6 /* CSS4Colors.swift in Sources */,
 				92E58F8D1DBC40E70052AEC6 /* UIColor.swift in Sources */,
-				92E58FCB1DBCA0000052AEC6 /* readme.md in Sources */,
 				92E58FC81DBC9E630052AEC6 /* CrayonColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -790,6 +788,7 @@
 				92E58FBA1DBC7E980052AEC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
