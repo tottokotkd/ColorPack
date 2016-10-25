@@ -5,17 +5,17 @@ swift color utility
 ## get 
 
 ### manual
-click 'clone or download' 
+click `clone or download` 
 
-### Carthage
+### Carthage (recommended)
 
-1. add 'ColorPack' to Cartfile
+1. add ColorPack to `Cartfile`
 
-```
-github "tottokotkd/ColorPack" "1.1"
-```
+    ```
+    github "tottokotkd/ColorPack" "1.1"
+    ```
 
-2. 'carthage update'
+2. `carthage update`
 
 ## use
 
@@ -67,6 +67,7 @@ JapaneseColors.sabionando.toUIColor
 JapaneseColors.錆御納戸.toUIColor
 ```
 
+### screenshot
 ![playgroupnd](doc/p1.png)
 
 ## License
