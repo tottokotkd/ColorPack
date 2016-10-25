@@ -13,7 +13,6 @@ public protocol ColorInitializer {
     static func create(red: Int, green: Int, blue: Int, alpha: Double) -> ColorProtocol?
     static func create(hex: Int, alpha: Double) -> ColorProtocol?
     static func create(red: Double, green: Double, blue: Double, alpha: Double) -> ColorProtocol?
-    
 }
 public protocol ColorFactory: ColorInitializer {
     static func webSafe(red: WebSafeColorKey, green: WebSafeColorKey, blue: WebSafeColorKey) -> ColorProtocol
