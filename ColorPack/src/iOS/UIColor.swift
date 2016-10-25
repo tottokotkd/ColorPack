@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension Color {
+extension ColorProtocol {
     public var toUIColor: UIColor {
-        let (r, g, b, a) = toFloat
-        return UIColor(colorLiteralRed: r, green: g, blue: b, alpha: a)
+        let (r, g, b) = toFloatRGB
+        return UIColor(colorLiteralRed: r, green: g, blue: b, alpha: Float(alpha))
     }
 }

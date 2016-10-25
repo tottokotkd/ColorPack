@@ -8,9 +8,9 @@
 
 import Foundation
 
-extension Color {
-    public static func WebSafe(red: WebSafeColorKey, green: WebSafeColorKey, blue: WebSafeColorKey) -> Color {
-        return Color(red: red.rawValue, green: green.rawValue, blue: blue.rawValue)!
+extension ColorFactory {
+    public static func webSafe(red: WebSafeColorKey, green: WebSafeColorKey, blue: WebSafeColorKey) -> ColorProtocol {
+        return Color.create(red: red.rawValue, green: green.rawValue, blue: blue.rawValue)!
     }
 }
 

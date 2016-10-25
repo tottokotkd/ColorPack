@@ -8,9 +8,9 @@
 
 import AppKit
 
-extension Color {
+extension ColorProtocol {
     public var toNSColor: NSColor {
-        let (r, g, b, a) = toFloat
-        return NSColor(colorLiteralRed: r, green: g, blue: b, alpha: a)
+        let (r, g, b) = toFloatRGB
+        return NSColor(colorLiteralRed: r, green: g, blue: b, alpha: Float(alpha))
     }
 }

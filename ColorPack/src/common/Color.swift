@@ -1,43 +1,54 @@
 //
-//  Util.swift
+//  ColorProtocol.swift
 //  ColorPack
 //
-//  Created by Shusuke Tokuda on 2016/10/22.
-//
+//  Created by Shusuke Tokuda on 2016/10/25.
+//  Copyright © 2016年 tottokotkd. All rights reserved.
 //
 
 import Foundation
 
-public struct Color {
-    public let red: Int
-    public let green: Int
-    public let blue: Int
-    public let alpha: Double
-    public init?(red: Int, green: Int, blue: Int, alpha: Double = 1.0) {
-        if 0...255 ~= red && 0...255 ~= green && 0...255 ~= blue && 0...1 ~= alpha  {
-            self.red = red
-            self.green = green
-            self.blue = blue
-            self.alpha = alpha
-        } else {
-            return nil
-        }
+public struct Color: ColorFactory {}
+public protocol ColorInitializer {
+    static func create(red: Int, green: Int, blue: Int, alpha: Double) -> ColorProtocol?
+    static func create(hex: Int, alpha: Double) -> ColorProtocol?
+    static func create(red: Double, green: Double, blue: Double, alpha: Double) -> ColorProtocol?
+    
+}
+public protocol ColorFactory: ColorInitializer {
+    static func webSafe(red: WebSafeColorKey, green: WebSafeColorKey, blue: WebSafeColorKey) -> ColorProtocol
+    static func rgb(red: RGB, green: RGB, blue: RGB) -> ColorProtocol
+    static func hex(red: Hex, green: Hex, blue: Hex) -> ColorProtocol
+    static func hex(keys: HexKeys) -> ColorProtocol
+}
+
+public protocol ColorProtocol {
+    var alpha: Double {get}
+    var toHexString: String {get}
+    var toIntRGB: (red: Int, green: Int, blue: Int) {get}
+    var toFloatRGB: (red: Float, green: Float, blue: Float) {get}
+    var toDoubleRGB: (red: Double, green: Double, blue: Double) {get}
+}
+
+extension ColorProtocol {
+    public var toHexString: String {
+        let (r, g, b) = toIntRGB
+        return String(format:"%02X", r) + String(format:"%02X", g) + String(format:"%02X", b)
     }
-    public init?(hex: Int, alpha: Double = 1.0) {
-        if 0...0xFFFFFF ~= hex && 0...1 ~= alpha {
-            red = (hex & 0xFF0000) >> 16
-            green = (hex & 0x00FF00) >> 8
-            blue = hex & 0x0000FF
-            self.alpha = alpha
-        } else {
-            return nil
-        }
+    public var toIntRGB: (red: Int, green: Int, blue: Int) {
+        let (r, g, b) = toDoubleRGB
+        return (Int(r * 255.0), Int(g * 255.0), Int(b * 255.0))
     }
-    public var toFloat: (red: Float, green: Float, blue: Float, alpha: Float) {
-        let r = Float(red) / 255.0
-        let g = Float(green) / 255.0
-        let b = Float(blue) / 255.0
-        let a = Float(alpha)
-        return (r, g, b, a)        
+    public var toDoubleRGB: (red: Double, green: Double, blue: Double) {
+        let (r, g, b) = toIntRGB
+        return (Double(r) / 255.0, Double(g) / 255.0, Double(b) / 255.0)
+    }
+    public var toFloatRGB: (red: Float, green: Float, blue: Float) {
+        let (r, g, b) = toDoubleRGB
+        return (Float(r), Float(g), Float(b))
+    }
+    public func description() -> String {
+        let (r, g, b) = toDoubleRGB
+        return "\(type(of: self)) <red: \(r), green: \(g), blue: \(b), alpha: \(alpha)>"
     }
 }

@@ -8,16 +8,16 @@
 
 import Foundation
 
-extension Color {
-    public static func Hex(red: Hex, green: Hex, blue: Hex) -> Color {
-        return Color(red: red.rawValue, green: green.rawValue, blue: blue.rawValue)!
+extension ColorFactory {
+    public static func hex(red: Hex, green: Hex, blue: Hex) -> ColorProtocol {
+        return Color.create(red: red.rawValue, green: green.rawValue, blue: blue.rawValue)!
     }
-    internal static func Hex(keys: HexKeys) -> Color {
-        return Color(red: keys.red.rawValue, green: keys.green.rawValue, blue: keys.blue.rawValue)!
+    public static func hex(keys: HexKeys) -> ColorProtocol {
+        return Color.create(red: keys.red.rawValue, green: keys.green.rawValue, blue: keys.blue.rawValue)!
     }
 }
 
-internal struct HexKeys {
+public struct HexKeys {
     let red: Hex
     let green: Hex
     let blue: Hex

@@ -8,9 +8,9 @@
 
 import Foundation
 
-extension Color {
-    public static func RGB(red: RGB, green: RGB, blue: RGB) -> Color {
-        return Color(red: red.rawValue, green: green.rawValue, blue: blue.rawValue)!
+extension ColorFactory {
+    public static func rgb(red: RGB, green: RGB, blue: RGB) -> ColorProtocol {
+        return Color.create(red: red.rawValue, green: green.rawValue, blue: blue.rawValue)!
     }
 }
 
