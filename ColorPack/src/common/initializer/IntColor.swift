@@ -18,11 +18,11 @@ extension ColorInitializer {
 }
 
 private struct IntColor: ColorProtocol {
-    public let toIntRGB: (red: Int, green: Int, blue: Int)
+    public let intRGB: (red: Int, green: Int, blue: Int)
     public let alpha: Double
     public init?(red: Int, green: Int, blue: Int, alpha: Double) {
         if 0...255 ~= red && 0...255 ~= green && 0...255 ~= blue && 0...1 ~= alpha  {
-            self.toIntRGB = (red, green, blue)
+            self.intRGB = (red, green, blue)
             self.alpha = alpha
         } else {
             return nil
@@ -33,14 +33,14 @@ private struct IntColor: ColorProtocol {
             let red = (hex & 0xFF0000) >> 16
             let green = (hex & 0x00FF00) >> 8
             let blue = hex & 0x0000FF
-            self.toIntRGB = (red, green, blue)
+            self.intRGB = (red, green, blue)
             self.alpha = alpha
         } else {
             return nil
         }
     }
     public func description() -> String {
-        let (r, g, b) = toIntRGB
-        return "\(type(of: self)) <red: \(r), green: \(g), blue: \(b), alpha: \(alpha)>"
+        let (r, g, b) = intRGB
+        return "\(type(of: self)) #\(toHexString) <red: \(r), green: \(g), blue: \(b), alpha: \(alpha)>"
     }
 }

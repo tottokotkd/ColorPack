@@ -24,22 +24,18 @@ public protocol ColorFactory: ColorInitializer {
 public protocol ColorProtocol {
     var alpha: Double {get}
     var toHexString: String {get}
-    var toIntRGB: (red: Int, green: Int, blue: Int) {get}
+    var intRGB: (red: Int, green: Int, blue: Int) {get}
     var toFloatRGB: (red: Float, green: Float, blue: Float) {get}
     var toDoubleRGB: (red: Double, green: Double, blue: Double) {get}
 }
 
 extension ColorProtocol {
     public var toHexString: String {
-        let (r, g, b) = toIntRGB
+        let (r, g, b) = intRGB
         return String(format:"%02X", r) + String(format:"%02X", g) + String(format:"%02X", b)
     }
-    public var toIntRGB: (red: Int, green: Int, blue: Int) {
-        let (r, g, b) = toDoubleRGB
-        return (Int(r * 255.0), Int(g * 255.0), Int(b * 255.0))
-    }
     public var toDoubleRGB: (red: Double, green: Double, blue: Double) {
-        let (r, g, b) = toIntRGB
+        let (r, g, b) = intRGB
         return (Double(r) / 255.0, Double(g) / 255.0, Double(b) / 255.0)
     }
     public var toFloatRGB: (red: Float, green: Float, blue: Float) {
