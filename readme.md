@@ -12,7 +12,7 @@ click 'clone or download'
 1. add 'ColorPack' to Cartfile
 
 ```
-github "tottokotkd/ColorPack" "1.0"
+github "tottokotkd/ColorPack" "1.1"
 ```
 
 2. 'carthage update'
@@ -76,4 +76,4 @@ MIT
 ### v 1.0 -> 1.1
 * RGB can be specified with Double values
 * 'Color' struct is removed: `Color.init?()` is changed to `Color.create()`
-* factory methods renamed: , `Color.RGB`, `.Hex` and `.WebSafe`, are changed to `.rgb`, `.hex`, `.webSafe`
+* factory methods renamed: , `Color.RGB`, `.Hex` and `.WebSafe` are changed to `.rgb`, `.hex`, `.webSafe`
