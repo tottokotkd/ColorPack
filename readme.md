@@ -23,10 +23,17 @@ github "tottokotkd/ColorPack" "1.0"
 import ColorPack
 
 // init? (RGB)
+// Int
 Color.create(red: 100, green: 200, blue: 50)?.toUIColor
 Color.create(red: 100, green: 200, blue: 50, alpha: 0.3)?.toUIColor
 Color.create(red: 100, green: 200, blue: 350)?.toUIColor
 Color.create(red: 100, green: 200, blue: 50, alpha: 1.3)?.toUIColor
+
+// Double
+Color.create(red: 0.94, green: 0.38, blue: 0.13)?.toUIColor
+Color.create(red: 1 / 3.0, green: 4 / 5.0, blue: 8 / 9.0, alpha: 0.3)?.toUIColor
+Color.create(red: 0.94, green: 0.38, blue: 2)?.toUIColor
+Color.create(red: 0.94, green: 0.38, blue: 0.13, alpha: 1.1)?.toUIColor
 
 // init? (Hex)
 Color.create(hex: 0xFFcc44)?.toUIColor
@@ -65,8 +72,8 @@ JapaneseColors.錆御納戸.toUIColor
 ## License
 MIT
 
-
-## updates
+## version
 ### v 1.0 -> 1.1
+* RGB can be specified with Double values
 * 'Color' struct is removed: `Color.init?()` is changed to `Color.create()`
 * factory methods renamed: , `Color.RGB`, `.Hex` and `.WebSafe`, are changed to `.rgb`, `.hex`, `.webSafe`

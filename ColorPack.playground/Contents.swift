@@ -1,10 +1,17 @@
 import ColorPack
 
 // init? (RGB)
+// Int
 Color.create(red: 100, green: 200, blue: 50)?.toUIColor
 Color.create(red: 100, green: 200, blue: 50, alpha: 0.3)?.toUIColor
 Color.create(red: 100, green: 200, blue: 350)?.toUIColor
 Color.create(red: 100, green: 200, blue: 50, alpha: 1.3)?.toUIColor
+
+// Double
+Color.create(red: 0.94, green: 0.38, blue: 0.13)?.toUIColor
+Color.create(red: 1 / 3.0, green: 4 / 5.0, blue: 8 / 9.0, alpha: 0.3)?.toUIColor
+Color.create(red: 0.94, green: 0.38, blue: 2)?.toUIColor
+Color.create(red: 0.94, green: 0.38, blue: 0.13, alpha: 1.1)?.toUIColor
 
 // init? (Hex)
 Color.create(hex: 0xFFcc44)?.toUIColor
