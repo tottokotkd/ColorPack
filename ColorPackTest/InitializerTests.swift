@@ -1,15 +1,15 @@
 //
-//  ColorPackTest.swift
-//  ColorPackTest
+//  InitializerTests.swift
+//  ColorPack
 //
-//  Created by Shusuke Tokuda on 2016/10/23.
-//  Copyright © 2016 tottokotkd. All rights reserved.
+//  Created by Shusuke Tokuda on 2016/10/26.
+//  Copyright © 2016年 tottokotkd. All rights reserved.
 //
 
 import XCTest
 import ColorPack
 
-class ColorPackTest: XCTestCase {
+class InitializerTests: XCTestCase {
     
     func testOfRGBInitializers() {
         do {
@@ -82,6 +82,7 @@ class ColorPackTest: XCTestCase {
             XCTAssertEqual(1, color.toDoubleRGB.blue)
         }
     }
+    
     func testOfHexInitializers() {
         do {
             XCTAssertNotNil(Color.create(hex: 0x000000))
@@ -108,53 +109,5 @@ class ColorPackTest: XCTestCase {
             XCTAssertEqual(204, color.intRGB.green)
             XCTAssertEqual(153, color.intRGB.blue)
         }
-    }
-    func testOfWebSafeInitializers() {
-        do {
-            let color = Color.webSafe(red: .k0, green: .kC, blue: .kF)
-            XCTAssertEqual(0, color.intRGB.red)
-            XCTAssertEqual(204, color.intRGB.green)
-            XCTAssertEqual(255, color.intRGB.blue)
-        }
-    }
-    
-    func testOfFloatConvertor() {
-        do {
-            let color = Color.create(hex: 0xFFFFFF)!.toFloatRGB
-            XCTAssertEqual(1, color.red)
-            XCTAssertEqual(1, color.green)
-            XCTAssertEqual(1, color.blue)
-        }
-        do {
-            let color = Color.create(hex: 0xCCFFFF)!.toFloatRGB
-            XCTAssertEqual(0.8, color.red)
-            XCTAssertEqual(1, color.green)
-            XCTAssertEqual(1, color.blue)
-        }
-        do {
-            let color = Color.create(hex: 0x99FFFF)!.toFloatRGB
-            XCTAssertEqual(0.6, color.red)
-            XCTAssertEqual(1, color.green)
-            XCTAssertEqual(1, color.blue)
-        }
-        do {
-            let color = Color.create(hex: 0x66FFFF)!.toFloatRGB
-            XCTAssertEqual(0.4, color.red)
-            XCTAssertEqual(1, color.green)
-            XCTAssertEqual(1, color.blue)
-        }
-        do {
-            let color = Color.create(hex: 0x33FFFF)!.toFloatRGB
-            XCTAssertEqual(0.2, color.red)
-            XCTAssertEqual(1, color.green)
-            XCTAssertEqual(1, color.blue)
-        }
-        do {
-            let color = Color.create(hex: 0x00FFFF)!.toFloatRGB
-            XCTAssertEqual(0, color.red)
-            XCTAssertEqual(1, color.green)
-            XCTAssertEqual(1, color.blue)
-        }
-        
     }
 }

@@ -12,6 +12,12 @@ extension ColorInitializer {
     public static func create(red: Double, green: Double, blue: Double, alpha: Double = 1.0) -> ColorProtocol? {
         return DoubleColor(red: red, green: green, blue: blue, alpha: alpha)
     }
+    public static func truncate(red: Double, green: Double, blue: Double, alpha: Double) -> ColorProtocol {
+        return DoubleColor(red: truncateColorValue(red),
+                           green: truncateColorValue(green),
+                           blue: truncateColorValue(blue),
+                           alpha: truncateAlphaValue(alpha))!
+    }
 }
 
 private struct DoubleColor: ColorProtocol {
@@ -24,5 +30,9 @@ private struct DoubleColor: ColorProtocol {
         } else {
             return nil
         }
+    }
+    public var description: String {
+        let (r, g, b) = intRGB
+        return "DoubleColor <red: \(r), green: \(g), blue: \(b), alpha: \(alpha)>"
     }
 }

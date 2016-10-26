@@ -15,9 +15,19 @@ extension ColorInitializer {
     public static func create(hex: Int, alpha: Double = 1.0) -> ColorProtocol? {
         return IntColor(hex: hex, alpha: alpha)
     }
+    public static func truncate(red: Int, green: Int, blue: Int, alpha: Double) -> ColorProtocol {
+        return IntColor(red: truncateColorValue(red),
+                           green: truncateColorValue(green),
+                           blue: truncateColorValue(blue),
+                           alpha: truncateAlphaValue(alpha))!
+    }
+    public static func truncate(hex: Int, alpha: Double) -> ColorProtocol {
+        return IntColor(hex: max(min(hex, 0xFFFFFF), 0),
+                        alpha: truncateAlphaValue(alpha))!
+    }
 }
 
-private struct IntColor: ColorProtocol {
+struct IntColor: ColorProtocol {
     public let intRGB: (red: Int, green: Int, blue: Int)
     public let alpha: Double
     public init?(red: Int, green: Int, blue: Int, alpha: Double) {
@@ -39,8 +49,8 @@ private struct IntColor: ColorProtocol {
             return nil
         }
     }
-    public func description() -> String {
+    public var description: String {
         let (r, g, b) = intRGB
-        return "\(type(of: self)) #\(toHexString) <red: \(r), green: \(g), blue: \(b), alpha: \(alpha)>"
+        return "IntColor #\(toHexString) <red: \(r), green: \(g), blue: \(b), alpha: \(alpha)>"
     }
 }

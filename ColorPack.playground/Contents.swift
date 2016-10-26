@@ -44,3 +44,19 @@ JapaneseColors.藍.toUIColor
 JapaneseColors.sabionando.toUIColor
 JapaneseColors.錆御納戸.toUIColor
 
+(JapaneseColors.藍 + JapaneseColors.錆御納戸).toUIColor
+(JapaneseColors.藍 - JapaneseColors.錆御納戸).toUIColor
+(JapaneseColors.藍 * JapaneseColors.錆御納戸).toUIColor
+(JapaneseColors.藍 / JapaneseColors.錆御納戸).toUIColor
+
+(JapaneseColors.藍 * JapaneseColors.錆御納戸 - (JapaneseColors.藍 - JapaneseColors.錆御納戸)).toUIColor
+
+JapaneseColors.錆御納戸.toUIColor
+(JapaneseColors.藍 / 2).toUIColor
+(JapaneseColors.藍 / 3).toUIColor
+(JapaneseColors.藍 / 4).toUIColor
+(JapaneseColors.藍 / 5).toUIColor
+
+JapaneseColors.錆御納戸.toUIColor
+JapaneseColors.錆御納戸.toComplement.toUIColor
+JapaneseColors.錆御納戸.toInverse.toUIColor
