@@ -9,11 +9,11 @@
 import Foundation
 
 extension ColorFactory {
-    public static func hex(red: Hex, green: Hex, blue: Hex) -> ColorProtocol {
-        return Color.create(red: red.rawValue, green: green.rawValue, blue: blue.rawValue)!
+    public static func hex(red: Hex, green: Hex, blue: Hex) -> IntRGBColor {
+        return Self.create(red: red.rawValue, green: green.rawValue, blue: blue.rawValue)!
     }
-    public static func hex(keys: HexKeys) -> ColorProtocol {
-        return Color.create(red: keys.red.rawValue, green: keys.green.rawValue, blue: keys.blue.rawValue)!
+    public static func hex(keys: HexKeys) -> IntRGBColor {
+        return Self.create(red: keys.red.rawValue, green: keys.green.rawValue, blue: keys.blue.rawValue)!
     }
 }
 

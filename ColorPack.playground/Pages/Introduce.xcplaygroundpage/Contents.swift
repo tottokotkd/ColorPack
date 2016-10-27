@@ -55,8 +55,11 @@ JapaneseColors.錆御納戸.toUIColor
 (JapaneseColors.藍 / 2).toUIColor
 (JapaneseColors.藍 / 3).toUIColor
 (JapaneseColors.藍 / 4).toUIColor
-(JapaneseColors.藍 / 5).toUIColor
+(JapaneseColors.藍 / 5 * 100).toUIColor
 
 JapaneseColors.錆御納戸.toUIColor
 JapaneseColors.錆御納戸.toComplement.toUIColor
 JapaneseColors.錆御納戸.toInverse.toUIColor
+
+Color.create(hex: 0xffa245)
+Color.create(hex: 0xffa245)?.toComplement

@@ -11,46 +11,35 @@ import Foundation
 public struct Color: ColorFactory {
 }
 
-public protocol ColorInitializer {
-    static func create(red: Int, green: Int, blue: Int, alpha: Double) -> ColorProtocol?
-    static func create(hex: Int, alpha: Double) -> ColorProtocol?
-    static func create(red: Double, green: Double, blue: Double, alpha: Double) -> ColorProtocol?
-    static func truncate(red: Int, green: Int, blue: Int, alpha: Double) -> ColorProtocol
-    static func truncate(hex: Int, alpha: Double) -> ColorProtocol
-    static func truncate(red: Double, green: Double, blue: Double, alpha: Double) -> ColorProtocol
-    static func truncateColorValue(_ value: Double) -> Double
-    static func truncateColorValue(_ value: Int) -> Int
-    static func truncateAlphaValue(_ value: Double) -> Double
-}
-
-public protocol ColorFactory: ColorInitializer {
-    static func webSafe(red: WebSafeColorKey, green: WebSafeColorKey, blue: WebSafeColorKey) -> ColorProtocol
-    static func rgb(red: RGB, green: RGB, blue: RGB) -> ColorProtocol
-    static func hex(red: Hex, green: Hex, blue: Hex) -> ColorProtocol
-    static func hex(keys: HexKeys) -> ColorProtocol
+public protocol ColorFactory: IntRGBColorInitializer, DoubleRGBColorInitializer {
+    static func webSafe(red: WebSafeColorKey, green: WebSafeColorKey, blue: WebSafeColorKey) -> IntRGBColor
+    static func rgb(red: RGB, green: RGB, blue: RGB) -> IntRGBColor
+    static func hex(red: Hex, green: Hex, blue: Hex) -> IntRGBColor
+    static func hex(keys: HexKeys) -> IntRGBColor
 }
 
 public protocol ColorProtocol: ColorFactory, CustomStringConvertible {
-    var intRGB: (red: Int, green: Int, blue: Int) {get}
+    associatedtype T
+    var rawValue: T {get}
     var alpha: Double {get}
     
+    init?(rawValue: T, alpha: Double)
+    
+    var toIntRGB: (red: Int, green: Int, blue: Int) {get}
     var toFloatRGB: (red: Float, green: Float, blue: Float) {get}
     var toDoubleRGB: (red: Double, green: Double, blue: Double) {get}
     var toHexString: String {get}
     
-    typealias RGBa = (Int, Int, Int, Double)
-    func map(transformColor: (Int) throws -> Int) rethrows -> ColorProtocol?
-    func map(transformAlpha: (Double) throws -> Double) rethrows -> ColorProtocol?
-    func map(_ transform: (RGBa) throws -> RGBa) rethrows -> ColorProtocol?
-    func merge(_ rhs: ColorProtocol, transformColor: (Int, Int) throws -> Int) rethrows -> ColorProtocol?
-    func merge(_ rhs: ColorProtocol, transformAlpha: (Double, Double) throws -> Double) rethrows -> ColorProtocol?
-    func merge(_ rhs: ColorProtocol, _ transform: (RGBa, RGBa) throws -> RGBa) rethrows -> ColorProtocol?
-    func withAlpha(_ alpha: Double) -> ColorProtocol?
+    func map(_ transform: (T) throws -> T) rethrows -> Self?
+    func map(transformAlpha: (Double) throws -> Double) rethrows -> Self?
+    func merge(_ rhs: Self, _ transform: (T, T) throws -> T) rethrows -> Self?
+    func merge(_ rhs: Self, transformAlpha: (Double, Double) throws -> Double) rethrows -> Self?
+    func withAlpha(_ alpha: Double) -> Self?
     
-    func add(_ rhs: ColorProtocol) -> ColorProtocol
-    func subtract(_ rhs: ColorProtocol) -> ColorProtocol
-    func multiply(_ rhs: ColorProtocol) -> ColorProtocol
-    func divide(_ rhs: ColorProtocol) -> ColorProtocol
+    func add(_ rhs: Self) -> Self
+    func subtract(_ rhs: Self) -> Self
+    func multiply(_ rhs: Self) -> Self
+    func divide(_ rhs: Self) -> Self
 //    func screen(_ rhs: ColorProtocol) -> ColorProtocol
 //    func overlay(_ rhs: ColorProtocol) -> ColorProtocol
 //    func dodge(_ rhs: ColorProtocol) -> ColorProtocol
@@ -61,7 +50,22 @@ public protocol ColorProtocol: ColorFactory, CustomStringConvertible {
 //    func grainMerge(_ rhs: ColorProtocol) -> ColorProtocol
 //    func difference(_ rhs: ColorProtocol) -> ColorProtocol
 //    func darkenOnly(_ rhs: ColorProtocol) -> ColorProtocol
-//    func lightenOnly(_ rhs: ColorProtocol) -> ColorProtocol
-    var toInverse: ColorProtocol {get}
-    var toComplement: ColorProtocol {get}
+    //    func lightenOnly(_ rhs: ColorProtocol) -> ColorProtocol
+    
+    var toInverse: Self {get}
+    var toComplement: Self {get}
+}
+
+public protocol IntRGBColorProtocol: ColorProtocol {
+    var rawValue: (red: Int, green: Int, blue: Int) {get}
+    
+    func map(transformColor: (Int) throws -> Int) rethrows -> Self?
+    func merge(_ rhs: Self, transformColor: (Int, Int) throws -> Int) rethrows -> Self?
+}
+
+protocol DoubleRGBColorProtocol: ColorProtocol {
+    var rawValue: (red: Double, green: Double, blue: Double) {get}
+    
+    func map(transformColor: (Double) throws -> Double) rethrows -> Self?
+    func merge(_ rhs: Self, transformColor: (Double, Double) throws -> Double) rethrows -> Self?
 }

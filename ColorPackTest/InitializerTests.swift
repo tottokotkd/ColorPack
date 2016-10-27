@@ -60,9 +60,9 @@ class InitializerTests: XCTestCase {
         }
         do {
             let color = Color.create(red: 51, green: 153, blue: 255)!
-            XCTAssertEqual(51, color.intRGB.red)
-            XCTAssertEqual(153, color.intRGB.green)
-            XCTAssertEqual(255, color.intRGB.blue)
+            XCTAssertEqual(51, color.toIntRGB.red)
+            XCTAssertEqual(153, color.toIntRGB.green)
+            XCTAssertEqual(255, color.toIntRGB.blue)
             XCTAssertEqual(0.2, color.toFloatRGB.red)
             XCTAssertEqual(0.6, color.toFloatRGB.green)
             XCTAssertEqual(1, color.toFloatRGB.blue)
@@ -71,9 +71,9 @@ class InitializerTests: XCTestCase {
             XCTAssertEqual(1, color.toDoubleRGB.blue)        }
         do {
             let color = Color.create(red: 0.2, green: 0.6, blue: 1)!
-            XCTAssertEqual(51, color.intRGB.red)
-            XCTAssertEqual(153, color.intRGB.green)
-            XCTAssertEqual(255, color.intRGB.blue)
+            XCTAssertEqual(51, color.toIntRGB.red)
+            XCTAssertEqual(153, color.toIntRGB.green)
+            XCTAssertEqual(255, color.toIntRGB.blue)
             XCTAssertEqual(0.2, color.toFloatRGB.red)
             XCTAssertEqual(0.6, color.toFloatRGB.green)
             XCTAssertEqual(1, color.toFloatRGB.blue)
@@ -105,9 +105,9 @@ class InitializerTests: XCTestCase {
         }
         do {
             let color = Color.create(hex: 0xFFCC99)!
-            XCTAssertEqual(255, color.intRGB.red)
-            XCTAssertEqual(204, color.intRGB.green)
-            XCTAssertEqual(153, color.intRGB.blue)
+            XCTAssertEqual(255, color.toIntRGB.red)
+            XCTAssertEqual(204, color.toIntRGB.green)
+            XCTAssertEqual(153, color.toIntRGB.blue)
         }
     }
 }

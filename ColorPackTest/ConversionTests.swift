@@ -92,13 +92,13 @@ class ColorPackTest: XCTestCase {
         let color = Color.create(hex: value)!
         XCTAssertEqual("1289FC", color.toHexString)
     }
-    func testOfIntColorDescription() {
+    func testOfIntRGBColorDescription() {
         let value = 0xCC9933
         let color = Color.create(hex: value)!
-        XCTAssertEqual("IntColor #CC9933 <red: 204, green: 153, blue: 51, alpha: 1.0>", color.description)
+        XCTAssertEqual("IntRGBColor #CC9933 <red: 204, green: 153, blue: 51, alpha: 1.0>", color.description)
     }
-    func testOfDoubleColorDescription() {
+    func testOfDoubleRGBColorDescription() {
         let color = Color.create(red: 0.8, green: 0.6, blue: 0.2)!
-        XCTAssertEqual("DoubleColor <red: 204, green: 153, blue: 51, alpha: 1.0>", color.description)
+        XCTAssertEqual("DoubleRGBColor <red: 0.8, green: 0.6, blue: 0.2, alpha: 1.0>", color.description)
     }
 }
