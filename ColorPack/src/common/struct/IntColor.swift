@@ -68,19 +68,22 @@ public struct IntRGBColor: IntRGBColorProtocol {
     public var toIntRGB: (red: Int, green: Int, blue: Int) {return rawValue}
     
     public func map(transformColor: (Int) throws -> Int) rethrows -> IntRGBColor? {
-        let (r, g, b) = rawValue
-        let red = try transformColor(r)
-        let green = try transformColor(g)
-        let blue = try transformColor(b)
-        return IntRGBColor(red: red, green: green, blue: blue, alpha: alpha)
+        return try map{(r, g, b) in
+            let red = try transformColor(r)
+            let green = try transformColor(g)
+            let blue = try transformColor(b)
+            return (red, green, blue)
+        }
     }
     public func merge(_ rhs: IntRGBColor, transformColor: (Int, Int) throws -> Int) rethrows -> IntRGBColor? {
-        let (r1, g1, b1) = rawValue
-        let (r2, g2, b2) = rhs.rawValue
-        let red = try transformColor(r1, r2)
-        let green = try transformColor(g1, g2)
-        let blue = try transformColor(b1, b2)
-        return IntRGBColor(red: red, green: green, blue: blue, alpha: alpha)
+        return try merge(rhs) {(l: T, r: T) in
+            let (r1, g1, b1) = l
+            let (r2, g2, b2) = r
+            let red = try transformColor(r1, r2)
+            let green = try transformColor(g1, g2)
+            let blue = try transformColor(b1, b2)
+            return (red, green, blue)
+        }
     }
     
     public func add(_ rhs: IntRGBColor) -> IntRGBColor {

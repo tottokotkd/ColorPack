@@ -46,19 +46,22 @@ public struct DoubleRGBColor: DoubleRGBColorProtocol {
     public var toDoubleRGB: (red: Double, green: Double, blue: Double) {return rawValue}
     
     public func map(transformColor: (Double) throws -> Double) rethrows -> DoubleRGBColor? {
-        let (r, g, b) = rawValue
-        let red = try transformColor(r)
-        let green = try transformColor(g)
-        let blue = try transformColor(b)
-        return DoubleRGBColor(red: red, green: green, blue: blue, alpha: alpha)
+        return try map{(r, g, b) in
+            let red = try transformColor(r)
+            let green = try transformColor(g)
+            let blue = try transformColor(b)
+            return (red, green, blue)
+        }
     }
     public func merge(_ rhs: DoubleRGBColor, transformColor: (Double, Double) throws -> Double) rethrows -> DoubleRGBColor? {
-        let (r1, g1, b1) = rawValue
-        let (r2, g2, b2) = rhs.rawValue
-        let red = try transformColor(r1, r2)
-        let green = try transformColor(g1, g2)
-        let blue = try transformColor(b1, b2)
-        return DoubleRGBColor(red: red, green: green, blue: blue, alpha: alpha)
+        return try merge(rhs) {(l: T, r: T) in
+            let (r1, g1, b1) = l
+            let (r2, g2, b2) = r
+            let red = try transformColor(r1, r2)
+            let green = try transformColor(g1, g2)
+            let blue = try transformColor(b1, b2)
+            return (red, green, blue)
+        }
     }
     
     public func add(_ rhs: DoubleRGBColor) -> DoubleRGBColor {
