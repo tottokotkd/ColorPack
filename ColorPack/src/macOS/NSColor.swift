@@ -10,7 +10,10 @@ import AppKit
 
 extension ColorProtocol {
     public var toNSColor: NSColor {
-        let (r, g, b) = toFloatRGB
-        return NSColor(colorLiteralRed: r, green: g, blue: b, alpha: Float(alpha))
+        let (r, g, b) = toDoubleRGB
+        let red = r / percentageMax
+        let green = g / percentageMax
+        let blue = b / percentageMax
+        return NSColor(colorLiteralRed: Float(red), green: Float(green), blue: Float(blue), alpha: Float(alpha))
     }
 }

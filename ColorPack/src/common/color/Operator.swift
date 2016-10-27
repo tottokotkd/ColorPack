@@ -75,9 +75,8 @@ public func *<C: ColorProtocol>(lhs: C, rhs: C) -> C {
 public func *<C: ColorProtocol>(lhs: C, rhs: Int) -> C {
     return lhs * Double(rhs)
 }
-
 public func *<C: ColorProtocol>(lhs: C, rhs: Double) -> C {
-    let value = truncateAlphaValue(lhs.alpha * rhs)
+    let value = (lhs.alpha * rhs).asPercentage
     return lhs.withAlpha(value)!
 }
 public func /<C: ColorProtocol>(lhs: C, rhs: C) -> C {
@@ -87,7 +86,7 @@ public func /<C: ColorProtocol>(lhs: C, rhs: Int) -> C {
     return lhs / Double(rhs)
 }
 public func /<C: ColorProtocol>(lhs: C, rhs: Double) -> C {
-    let value = truncateAlphaValue(lhs.alpha / rhs)
+    let value = (lhs.alpha / rhs).asPercentage
     return lhs.withAlpha(value)!
 }
 public prefix func !<C: ColorProtocol>(lhs: C) -> C {

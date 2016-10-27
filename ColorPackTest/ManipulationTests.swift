@@ -109,7 +109,7 @@ class ManipulationTests: XCTestCase {
         }
         do {
             let color = Color.create(hex: 0x336699, alpha: 0.6)!
-            let result = color.withAlpha(1.9)
+            let result = color.withAlpha(100.9)
             XCTAssertNil(result)
         }
     }

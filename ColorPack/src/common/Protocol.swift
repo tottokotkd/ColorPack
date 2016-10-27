@@ -21,20 +21,19 @@ public protocol ColorFactory: IntRGBColorInitializer, DoubleRGBColorInitializer 
 public protocol ColorProtocol: ColorFactory, CustomStringConvertible {
     associatedtype T
     var rawValue: T {get}
-    var alpha: Double {get}
+    var alpha: Percentage {get}
     
     init?(rawValue: T, alpha: Double)
     
-    var toIntRGB: (red: Int, green: Int, blue: Int) {get}
-    var toFloatRGB: (red: Float, green: Float, blue: Float) {get}
-    var toDoubleRGB: (red: Double, green: Double, blue: Double) {get}
+    var toIntRGB: (red: RGB, green: RGB, blue: RGB) {get}
+    var toDoubleRGB: (red: Percentage, green: Percentage, blue: Percentage) {get}
     var toHexString: String {get}
     
     func map(_ transform: (T) throws -> T) rethrows -> Self?
-    func map(transformAlpha: (Double) throws -> Double) rethrows -> Self?
+    func map(transformAlpha: (Percentage) throws -> Percentage) rethrows -> Self?
     func merge(_ rhs: Self, _ transform: (T, T) throws -> T) rethrows -> Self?
-    func merge(_ rhs: Self, transformAlpha: (Double, Double) throws -> Double) rethrows -> Self?
-    func withAlpha(_ alpha: Double) -> Self?
+    func merge(_ rhs: Self, transformAlpha: (Percentage, Percentage) throws -> Percentage) rethrows -> Self?
+    func withAlpha(_ alpha: Percentage) -> Self?
     
     func add(_ rhs: Self) -> Self
     func subtract(_ rhs: Self) -> Self
@@ -57,15 +56,14 @@ public protocol ColorProtocol: ColorFactory, CustomStringConvertible {
 }
 
 public protocol IntRGBColorProtocol: ColorProtocol {
-    var rawValue: (red: Int, green: Int, blue: Int) {get}
-    
-    func map(transformColor: (Int) throws -> Int) rethrows -> Self?
-    func merge(_ rhs: Self, transformColor: (Int, Int) throws -> Int) rethrows -> Self?
+    var rawValue: (red: RGB, green: RGB, blue: RGB) {get}
+    func map(transformColor: (RGB) throws -> RGB) rethrows -> Self?
+    func merge(_ rhs: Self, transformColor: (RGB, RGB) throws -> RGB) rethrows -> Self?
 }
 
 protocol DoubleRGBColorProtocol: ColorProtocol {
-    var rawValue: (red: Double, green: Double, blue: Double) {get}
-    
-    func map(transformColor: (Double) throws -> Double) rethrows -> Self?
-    func merge(_ rhs: Self, transformColor: (Double, Double) throws -> Double) rethrows -> Self?
+    var rawValue: (red: Percentage, green: Percentage, blue: Percentage) {get}
+    func map(transformColor: (Percentage) throws -> Percentage) rethrows -> Self?
+    func merge(_ rhs: Self, transformColor: (Percentage, Percentage) throws -> Percentage) rethrows -> Self?
+}
 }

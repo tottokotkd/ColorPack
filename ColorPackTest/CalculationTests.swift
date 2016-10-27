@@ -78,9 +78,9 @@ class CalculationMethodTests: XCTestCase {
             let value2 = Color.create(red: 2, green: 0, blue: 255)!
             let result = value1.divide(value2)
             let (red, green, blue) = result.toIntRGB
-            XCTAssertEqual(255, red)
+            XCTAssertEqual(51, red)
             XCTAssertEqual(255, green)
-            XCTAssertEqual(51, blue)
+            XCTAssertEqual(0, blue)
         }
     }
     
@@ -204,12 +204,12 @@ class OperatorsTests: XCTestCase {
         }
         do {
             let value = Color.create(red: 102, green: 153, blue: 51, alpha: 0.8)!
-            let result = value * 4.0
+            let result = value * 400.0
             let (red, green, blue) = result.toIntRGB
             XCTAssertEqual(102, red)
             XCTAssertEqual(153, green)
             XCTAssertEqual(51, blue)
-            XCTAssertEqual(1, result.alpha)
+            XCTAssertEqual(100, result.alpha)
         }
         do {
             let value = Color.create(red: 102, green: 153, blue: 51, alpha: 0.8)!
@@ -243,12 +243,12 @@ class OperatorsTests: XCTestCase {
         }
         do {
             let value = Color.create(red: 102, green: 153, blue: 51, alpha: 0.8)!
-            let result = value / 0.4
+            let result = value / 0.0004
             let (red, green, blue) = result.toIntRGB
             XCTAssertEqual(102, red)
             XCTAssertEqual(153, green)
             XCTAssertEqual(51, blue)
-            XCTAssertEqual(1, result.alpha)
+            XCTAssertEqual(100, result.alpha)
         }
     }
     func testOfOperatorToComplement() {

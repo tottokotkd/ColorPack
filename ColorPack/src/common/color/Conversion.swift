@@ -9,17 +9,20 @@
 import Foundation
 
 extension ColorProtocol {
-    public var toIntRGB: (red: Int, green: Int, blue: Int) {
+    public var toIntRGB: (red: RGB, green: RGB, blue: RGB) {
         let (r, g, b) = toDoubleRGB
-        return (Int(r * 255), Int(g * 255), Int(b * 255))
+        let red = r / percentageMax * Double(rgbMax)
+        let green = g / percentageMax * Double(rgbMax)
+        let blue = b / percentageMax * Double(rgbMax)
+        return (RGB(red), RGB(green), RGB(blue))
     }
-    public var toFloatRGB: (red: Float, green: Float, blue: Float) {
-        let (r, g, b) = toDoubleRGB
-        return (Float(r), Float(g), Float(b))
-    }
-    public var toDoubleRGB: (red: Double, green: Double, blue: Double) {
+    public var toDoubleRGB: (red: Percentage, green: Percentage, blue: Percentage) {
         let (r, g, b) = toIntRGB
-        return (Double(r) / 255.0, Double(g) / 255.0, Double(b) / 255.0)
+        let red = Double(r) / Double(rgbMax) * percentageMax
+        let green = Double(g) / Double(rgbMax) * percentageMax
+        let blue = Double(b) / Double(rgbMax) * percentageMax
+        return (Percentage(red), Percentage(green), Percentage(blue))
+    }
     }
     public var toHexString: String {
         let (r, g, b) = toIntRGB

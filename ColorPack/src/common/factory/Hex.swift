@@ -28,7 +28,7 @@ public struct HexKeys {
     }
 }
 
-public enum HexKey: Int {
+public enum HexKey: RGB {
     case x00 = 0
     case x01 = 1
     case x02 = 2

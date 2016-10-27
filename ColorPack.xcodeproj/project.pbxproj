@@ -13,8 +13,8 @@
 		928EF07A1DC1D7F2000A0B4B /* HSLColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928EF0741DC1D7F2000A0B4B /* HSLColor.swift */; };
 		928EF07B1DC1D7F2000A0B4B /* IntColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928EF0751DC1D7F2000A0B4B /* IntColor.swift */; };
 		928EF07C1DC1D7F2000A0B4B /* IntColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928EF0751DC1D7F2000A0B4B /* IntColor.swift */; };
-		929504031DC1DA6F00E59F57 /* utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929504021DC1DA6F00E59F57 /* utility.swift */; };
-		929504041DC1DAC200E59F57 /* utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929504021DC1DA6F00E59F57 /* utility.swift */; };
+		929504031DC1DA6F00E59F57 /* Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929504021DC1DA6F00E59F57 /* Definition.swift */; };
+		929504041DC1DAC200E59F57 /* Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929504021DC1DA6F00E59F57 /* Definition.swift */; };
 		92B4749C1DBDED860017452B /* ColorPack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92DAEDDD1DBB9EDE00098CE5 /* ColorPack.framework */; };
 		92B474A21DBDED950017452B /* ConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E58FB21DBC7E980052AEC6 /* ConversionTests.swift */; };
 		92B474B01DBEDE7B0017452B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B474AF1DBEDE7B0017452B /* UIColor.swift */; };
@@ -75,7 +75,7 @@
 		928EF0731DC1D7F2000A0B4B /* DoubleColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DoubleColor.swift; path = ColorPack/src/common/struct/DoubleColor.swift; sourceTree = SOURCE_ROOT; };
 		928EF0741DC1D7F2000A0B4B /* HSLColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HSLColor.swift; path = ColorPack/src/common/struct/HSLColor.swift; sourceTree = SOURCE_ROOT; };
 		928EF0751DC1D7F2000A0B4B /* IntColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntColor.swift; path = ColorPack/src/common/struct/IntColor.swift; sourceTree = SOURCE_ROOT; };
-		929504021DC1DA6F00E59F57 /* utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = utility.swift; path = src/common/color/utility.swift; sourceTree = "<group>"; };
+		929504021DC1DA6F00E59F57 /* Definition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Definition.swift; path = src/common/color/Definition.swift; sourceTree = "<group>"; };
 		92B474971DBDED860017452B /* ColorPackTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ColorPackTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B474AF1DBEDE7B0017452B /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColor.swift; path = src/iOS/UIColor.swift; sourceTree = "<group>"; };
 		92B474B11DBEDE860017452B /* NSColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSColor.swift; path = src/macOS/NSColor.swift; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 				92C61F631DC066310049B826 /* Conversion.swift */,
 				92C61F461DC03F390049B826 /* Manipulation.swift */,
 				92C61F621DC066310049B826 /* Operator.swift */,
-				929504021DC1DA6F00E59F57 /* utility.swift */,
+				929504021DC1DA6F00E59F57 /* Definition.swift */,
 			);
 			name = color;
 			sourceTree = "<group>";
@@ -487,7 +487,7 @@
 				92B475141DBF82DB0017452B /* Hex.swift in Sources */,
 				92C61F641DC066310049B826 /* Operator.swift in Sources */,
 				92B474B01DBEDE7B0017452B /* UIColor.swift in Sources */,
-				929504031DC1DA6F00E59F57 /* utility.swift in Sources */,
+				929504031DC1DA6F00E59F57 /* Definition.swift in Sources */,
 				92B475161DBF82DB0017452B /* RGB.swift in Sources */,
 				928EF0791DC1D7F2000A0B4B /* HSLColor.swift in Sources */,
 				92C61F521DC03FF80049B826 /* WebSafeColors.swift in Sources */,
@@ -510,7 +510,7 @@
 				92B475151DBF82DB0017452B /* Hex.swift in Sources */,
 				92C61F651DC066310049B826 /* Operator.swift in Sources */,
 				92C61F4F1DC03FF80049B826 /* CSS4Colors.swift in Sources */,
-				929504041DC1DAC200E59F57 /* utility.swift in Sources */,
+				929504041DC1DAC200E59F57 /* Definition.swift in Sources */,
 				92B475171DBF82DB0017452B /* RGB.swift in Sources */,
 				92C61F5E1DC056FA0049B826 /* Manipulation.swift in Sources */,
 				928EF07A1DC1D7F2000A0B4B /* HSLColor.swift in Sources */,

@@ -14,7 +14,7 @@ extension ColorFactory {
     }
 }
 
-public enum WebSafeColorKey: Int {
+public enum WebSafeColorKey: RGB {
     case k0 = 0x0
     case k3 = 0x33
     case k6 = 0x66

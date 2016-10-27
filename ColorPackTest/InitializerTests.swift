@@ -32,54 +32,56 @@ class InitializerTests: XCTestCase {
             
         }
         do {
-            XCTAssertNotNil(Color.create(red: 0.0, green: 0.0, blue: 0.0))
-            XCTAssertNotNil(Color.create(red: 0.0, green: 0.0, blue: 1.0))
-            XCTAssertNotNil(Color.create(red: 0.0, green: 1.0, blue: 0.0))
-            XCTAssertNotNil(Color.create(red: 0.0, green: 1.0, blue: 1.0))
-            XCTAssertNotNil(Color.create(red: 1.0, green: 0.0, blue: 0.0))
-            XCTAssertNotNil(Color.create(red: 1.0, green: 0.0, blue: 1.0))
-            XCTAssertNotNil(Color.create(red: 1.0, green: 1.0, blue: 0.0))
-            XCTAssertNotNil(Color.create(red: 1.0, green: 1.0, blue: 1.0))
-            XCTAssertNotNil(Color.create(red: -0.0, green: -0.0, blue: -0.0))
-            
-            XCTAssertNil(Color.create(red: -1, green: 0.0, blue: 0.0))
-            XCTAssertNil(Color.create(red: 0.0, green: -1, blue: 0.0))
-            XCTAssertNil(Color.create(red: 0.0, green: 0.0, blue: -1))
-            XCTAssertNil(Color.create(red: 1.1, green: 0.0, blue: 0.0))
-            XCTAssertNil(Color.create(red: 0.0, green: 1.1, blue: 0.0))
-            XCTAssertNil(Color.create(red: 0.0, green: 0.0, blue: 1.1))
-            
-        }
-        do {
             XCTAssertNotNil(Color.create(red: 0, green: 0, blue: 0, alpha: 0))
             XCTAssertNotNil(Color.create(red: 0, green: 0, blue: 0, alpha: 1.0))
             XCTAssertNotNil(Color.create(red: 0, green: 0, blue: 0, alpha: -0.0))
             
             XCTAssertNil(Color.create(red: 0, green: 0, blue: 0, alpha: -0.1))
-            XCTAssertNil(Color.create(red: 0, green: 0, blue: 0, alpha: 1.1))
+            XCTAssertNil(Color.create(red: 0, green: 0, blue: 0, alpha: 100.1))
+        }
+        do {
+            XCTAssertNotNil(Color.create(red: 0.0, green: 0.0, blue: 0.0))
+            XCTAssertNotNil(Color.create(red: 0.0, green: 0.0, blue: 100.0))
+            XCTAssertNotNil(Color.create(red: 0.0, green: 1.0, blue: 0.0))
+            XCTAssertNotNil(Color.create(red: 0.0, green: 100.0, blue: 1.0))
+            XCTAssertNotNil(Color.create(red: 100.0, green: 0.0, blue: 0.0))
+            XCTAssertNotNil(Color.create(red: 100.0, green: 0.0, blue: 100.0))
+            XCTAssertNotNil(Color.create(red: 100.0, green: 100.0, blue: 0.0))
+            XCTAssertNotNil(Color.create(red: 100.0, green: 100.0, blue: 100.0))
+            XCTAssertNotNil(Color.create(red: -0.0, green: -0.0, blue: -0.0))
+            
+            XCTAssertNil(Color.create(red: -1, green: 0.0, blue: 0.0))
+            XCTAssertNil(Color.create(red: 0.0, green: -1, blue: 0.0))
+            XCTAssertNil(Color.create(red: 0.0, green: 0.0, blue: -1))
+            XCTAssertNil(Color.create(red: 100.1, green: 0.0, blue: 0.0))
+            XCTAssertNil(Color.create(red: 0.0, green: 100.1, blue: 0.0))
+            XCTAssertNil(Color.create(red: 0.0, green: 0.0, blue: 100.1))
+            
+        }
+        do {
+            XCTAssertNotNil(Color.create(red: 0.0, green: 0.0, blue: 0.0, alpha: 0))
+            XCTAssertNotNil(Color.create(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0))
+            XCTAssertNotNil(Color.create(red: 0, green: 0.0, blue: 0.0, alpha: -0.0))
+            
+            XCTAssertNil(Color.create(red: 0.0, green: 0.0, blue: 0.0, alpha: -0.1))
+            XCTAssertNil(Color.create(red: 0.0, green: 0.0, blue: 0.0, alpha: 100.1))
         }
         do {
             let color = Color.create(red: 51, green: 153, blue: 255)!
             XCTAssertEqual(51, color.toIntRGB.red)
             XCTAssertEqual(153, color.toIntRGB.green)
             XCTAssertEqual(255, color.toIntRGB.blue)
-            XCTAssertEqual(0.2, color.toFloatRGB.red)
-            XCTAssertEqual(0.6, color.toFloatRGB.green)
-            XCTAssertEqual(1, color.toFloatRGB.blue)
-            XCTAssertEqual(0.2, color.toDoubleRGB.red)
-            XCTAssertEqual(0.6, color.toDoubleRGB.green)
-            XCTAssertEqual(1, color.toDoubleRGB.blue)        }
+            XCTAssertEqual(20, color.toDoubleRGB.red)
+            XCTAssertEqual(60, color.toDoubleRGB.green)
+            XCTAssertEqual(100, color.toDoubleRGB.blue)        }
         do {
-            let color = Color.create(red: 0.2, green: 0.6, blue: 1)!
+            let color = Color.create(red: 20.0, green: 60.0, blue: 100.0)!
             XCTAssertEqual(51, color.toIntRGB.red)
             XCTAssertEqual(153, color.toIntRGB.green)
             XCTAssertEqual(255, color.toIntRGB.blue)
-            XCTAssertEqual(0.2, color.toFloatRGB.red)
-            XCTAssertEqual(0.6, color.toFloatRGB.green)
-            XCTAssertEqual(1, color.toFloatRGB.blue)
-            XCTAssertEqual(0.2, color.toDoubleRGB.red)
-            XCTAssertEqual(0.6, color.toDoubleRGB.green)
-            XCTAssertEqual(1, color.toDoubleRGB.blue)
+            XCTAssertEqual(20.0, color.toDoubleRGB.red)
+            XCTAssertEqual(60.0, color.toDoubleRGB.green)
+            XCTAssertEqual(100.0, color.toDoubleRGB.blue)
         }
     }
     
@@ -94,11 +96,11 @@ class InitializerTests: XCTestCase {
         }
         do {
             XCTAssertNotNil(Color.create(hex: 0x000000, alpha: 0))
-            XCTAssertNotNil(Color.create(hex: 0xFFFFFF, alpha: 1.0))
+            XCTAssertNotNil(Color.create(hex: 0xFFFFFF, alpha: 100.0))
             XCTAssertNotNil(Color.create(hex: 0x000000, alpha: -0))
             
             XCTAssertNil(Color.create(hex: -0x000001, alpha: -0.1))
-            XCTAssertNil(Color.create(hex: 0xFFFFFF, alpha: 1.1))
+            XCTAssertNil(Color.create(hex: 0xFFFFFF, alpha: 100.1))
         }
         do {
             XCTAssertNotNil(Color.create(hex: Int("FFFFFF", radix: 16)!))

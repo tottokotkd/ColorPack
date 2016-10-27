@@ -14,7 +14,7 @@ extension ColorFactory {
     }
 }
 
-public enum RGBKey: Int {
+public enum RGBKey: RGB {
     case d0 = 0
     case d1 = 1
     case d2 = 2
