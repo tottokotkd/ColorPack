@@ -9,12 +9,12 @@
 import Foundation
 
 extension ColorFactory {
-    public static func rgb(red: RGB, green: RGB, blue: RGB) -> IntRGBColor {
+    public static func rgb(red: RGBKey, green: RGBKey, blue: RGBKey) -> IntRGBColor {
         return Self.create(red: red.rawValue, green: green.rawValue, blue: blue.rawValue)!
     }
 }
 
-public enum RGB: Int {
+public enum RGBKey: Int {
     case d0 = 0
     case d1 = 1
     case d2 = 2
