@@ -86,16 +86,16 @@ class CalculationMethodTests: XCTestCase {
     
     func testOfPropToComplement() {
         do {
-            let value = Color.create(red: 102, green: 153, blue: 51)!
-            let result = value.toComplement
+            let value = Color.create(red: 102, green: 153, blue: 51)!.toHSLColor
+            let result = value.toComplementary
             let (red, green, blue) = result.toIntRGB
             XCTAssertEqual(102, red)
             XCTAssertEqual(51, green)
             XCTAssertEqual(153, blue)
         }
         do {
-            let value = Color.create(red: 102, green: 153, blue: 51)!
-            let result = value.toComplement.toComplement
+            let value = Color.create(red: 102, green: 153, blue: 51)!.toHSLColor
+            let result = value.toComplementary.toComplementary
             let (red, green, blue) = result.toIntRGB
             XCTAssertEqual(102, red)
             XCTAssertEqual(153, green)
@@ -104,7 +104,7 @@ class CalculationMethodTests: XCTestCase {
     }
     func testOfPropToInvert() {
         do {
-            let value = Color.create(red: 100, green: 25, blue: 190)!
+            let value = Color.create(red: 100, green: 25, blue: 190)!.toHSLColor
             let result = value.toInverse
             let (red, green, blue) = result.toIntRGB
             XCTAssertEqual(155, red)
@@ -112,7 +112,7 @@ class CalculationMethodTests: XCTestCase {
             XCTAssertEqual(65, blue)
         }
         do {
-            let value = Color.create(red: 100, green: 25, blue: 190)!
+            let value = Color.create(red: 100, green: 25, blue: 190)!.toHSLColor
             let result = value.toInverse.toInverse
             let (red, green, blue) = result.toIntRGB
             XCTAssertEqual(100, red)
@@ -253,7 +253,7 @@ class OperatorsTests: XCTestCase {
     }
     func testOfOperatorToComplement() {
         do {
-            let value = Color.create(red: 102, green: 153, blue: 51)!
+            let value = Color.create(red: 102, green: 153, blue: 51)!.toHSLColor
             let result = !value
             let (red, green, blue) = result.toIntRGB
             XCTAssertEqual(102, red)
@@ -261,7 +261,7 @@ class OperatorsTests: XCTestCase {
             XCTAssertEqual(153, blue)
         }
         do {
-            let value = Color.create(red: 102, green: 153, blue: 51)!
+            let value = Color.create(red: 102, green: 153, blue: 51)!.toHSLColor
             let result = !(!value)
             let (red, green, blue) = result.toIntRGB
             XCTAssertEqual(102, red)
@@ -271,7 +271,7 @@ class OperatorsTests: XCTestCase {
     }
     func testOfOperatorToInvert() {
         do {
-            let value = Color.create(red: 100, green: 25, blue: 190)!
+            let value = Color.create(red: 100, green: 25, blue: 190)!.toHSLColor
             let result = ~value
             let (red, green, blue) = result.toIntRGB
             XCTAssertEqual(155, red)
@@ -279,7 +279,7 @@ class OperatorsTests: XCTestCase {
             XCTAssertEqual(65, blue)
         }
         do {
-            let value = Color.create(red: 100, green: 25, blue: 190)!
+            let value = Color.create(red: 100, green: 25, blue: 190)!.toHSLColor
             let result = ~(~value)
             let (red, green, blue) = result.toIntRGB
             XCTAssertEqual(100, red)

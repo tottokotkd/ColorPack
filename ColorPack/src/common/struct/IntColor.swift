@@ -8,13 +8,6 @@
 
 import Foundation
 
-public protocol IntRGBColorInitializer {
-    static func create(red: RGB, green: RGB, blue: RGB, alpha: Percentage) -> IntRGBColor?
-    static func create(hex: Int, alpha: Percentage) -> IntRGBColor?
-    static func truncate(red: RGB, green: RGB, blue: RGB, alpha: Percentage) -> IntRGBColor
-    static func truncate(hex: Int, alpha: Percentage) -> IntRGBColor
-}
-
 extension IntRGBColorInitializer {
     public static func create(red: RGB, green: RGB, blue: RGB, alpha: Percentage = percentageMax) -> IntRGBColor? {
         return IntRGBColor(red: red, green: green, blue: blue, alpha: alpha)
@@ -30,8 +23,7 @@ extension IntRGBColorInitializer {
     }
 }
 
-public struct IntRGBColor: IntRGBColorProtocol {
-
+public struct IntRGBColor: IntRGBColorProtocol, ColorStructConvertor {
     public typealias T = (red: RGB, green: RGB, blue: RGB)
     public let rawValue: T
     public let alpha: Percentage
@@ -58,11 +50,25 @@ public struct IntRGBColor: IntRGBColorProtocol {
             return nil
         }
     }
-    public var toIntRGB: (red: Int, green: Int, blue: Int) {
-        let (r, g, b) = rawValue
-        return (Int(r), Int(g), Int(b))
+    public var toIntRGB: T {return rawValue}
+}
+
+extension IntRGBColor: ColorCalculationProtocol {
+    public func add(_ rhs: IntRGBColor) -> IntRGBColor {
+        return merge(rhs, transformColor: {(m, i) in (m + i).asRGB})!
     }
-    
+    public func subtract(_ rhs: IntRGBColor) -> IntRGBColor {
+        return merge(rhs, transformColor: {(m, i) in (m - i).asRGB})!
+    }
+    public func multiply(_ rhs: IntRGBColor) -> IntRGBColor {
+        return merge(rhs, transformColor: {(m, i) in ((m * i) / rgbMax).asRGB})!
+    }
+    public func divide(_ rhs: IntRGBColor) -> IntRGBColor {
+        return merge(rhs, transformColor: {(m, i) in i == 0 ? rgbMax : (m / i).asRGB})!
+    }
+}
+
+extension IntRGBColor: ColorManipulationProtocol {
     public func map(transformColor: (RGB) throws -> RGB) rethrows -> IntRGBColor? {
         return try map{(r, g, b) in
             let red = try transformColor(r)
@@ -81,29 +87,9 @@ public struct IntRGBColor: IntRGBColorProtocol {
             return (red, green, blue)
         }
     }
-    
-    public func add(_ rhs: IntRGBColor) -> IntRGBColor {
-        return merge(rhs, transformColor: {(m, i) in (m + i).asRGB})!
-    }
-    public func subtract(_ rhs: IntRGBColor) -> IntRGBColor {
-        return merge(rhs, transformColor: {(m, i) in (m - i).asRGB})!
-    }
-    public func multiply(_ rhs: IntRGBColor) -> IntRGBColor {
-        return merge(rhs, transformColor: {(m, i) in ((m * i) / rgbMax).asRGB})!
-    }
-    public func divide(_ rhs: IntRGBColor) -> IntRGBColor {
-        return merge(rhs, transformColor: {(m, i) in i == 0 ? rgbMax : (m / i).asRGB})!
-    }
-    
-    public var toInverse: IntRGBColor {
-        return map(transformColor: {rgbMax - $0})!
-    }
-    public var toComplement: IntRGBColor {
-        let (r, g, b) = rawValue
-        let key = max(r, g, b) + min(r, g, b)
-        return map(transformColor: {key - $0})!
-    }
+}
 
+extension IntRGBColor: CustomStringConvertible {
     public var description: String {
         let (r, g, b) = rawValue
         return "IntRGBColor #\(toHexString) <red: \(r), green: \(g), blue: \(b), alpha: \(alpha)%>"

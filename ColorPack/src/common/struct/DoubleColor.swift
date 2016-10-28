@@ -8,11 +8,6 @@
 
 import Foundation
 
-public protocol DoubleRGBColorInitializer {
-    static func create(red: Percentage, green: Percentage, blue: Percentage, alpha: Percentage) -> DoubleRGBColor?
-    static func truncate(red: Percentage, green: Percentage, blue: Percentage, alpha: Percentage) -> DoubleRGBColor
-}
-
 extension DoubleRGBColorInitializer {
     public static func create(red: Percentage, green: Percentage, blue: Percentage, alpha: Percentage = percentageMax) -> DoubleRGBColor? {
         return DoubleRGBColor(red: red, green: green, blue: blue, alpha: alpha)
@@ -28,10 +23,11 @@ extension DoubleRGBColorInitializer {
     }
 }
 
-public struct DoubleRGBColor: DoubleRGBColorProtocol {
+public struct DoubleRGBColor: DoubleRGBColorProtocol, ColorStructConvertor {
     public typealias T = (red: Percentage, green: Percentage, blue: Percentage)
     public let rawValue: T
     public let alpha: Percentage
+    
     public init?(rawValue: T, alpha: Percentage) {
         self.init(red: rawValue.red, green: rawValue.green, blue: rawValue.blue, alpha: alpha)
     }
@@ -43,8 +39,25 @@ public struct DoubleRGBColor: DoubleRGBColorProtocol {
             return nil
         }
     }
-    public var toDoubleRGB: (red: Percentage, green: Percentage, blue: Percentage) {return rawValue}
-    
+    public var toDoubleRGB: T {return rawValue}
+}
+
+extension DoubleRGBColor: ColorCalculationProtocol {
+    public func add(_ rhs: DoubleRGBColor) -> DoubleRGBColor {
+        return merge(rhs, transformColor: {(m, i) in (m + i).asPercentage})!
+    }
+    public func subtract(_ rhs: DoubleRGBColor) -> DoubleRGBColor {
+        return merge(rhs, transformColor: {(m, i) in (m - i).asPercentage})!
+    }
+    public func multiply(_ rhs: DoubleRGBColor) -> DoubleRGBColor {
+        return merge(rhs, transformColor: {(m, i) in (m * i / percentageMax).asPercentage})!
+    }
+    public func divide(_ rhs: DoubleRGBColor) -> DoubleRGBColor {
+        return merge(rhs, transformColor: {(m, i) in i == 0 ? percentageMax : (m / i).asPercentage})!
+    }
+}
+
+extension DoubleRGBColor: ColorManipulationProtocol {
     public func map(transformColor: (Percentage) throws -> Percentage) rethrows -> DoubleRGBColor? {
         return try map{(r, g, b) in
             let red = try transformColor(r)
@@ -63,29 +76,9 @@ public struct DoubleRGBColor: DoubleRGBColorProtocol {
             return (red, green, blue)
         }
     }
-    
-    public func add(_ rhs: DoubleRGBColor) -> DoubleRGBColor {
-        return merge(rhs, transformColor: {(m, i) in (m + i).asPercentage})!
-    }
-    public func subtract(_ rhs: DoubleRGBColor) -> DoubleRGBColor {
-        return merge(rhs, transformColor: {(m, i) in (m - i).asPercentage})!
-    }
-    public func multiply(_ rhs: DoubleRGBColor) -> DoubleRGBColor {
-        return merge(rhs, transformColor: {(m, i) in (m * i / percentageMax).asPercentage})!
-    }
-    public func divide(_ rhs: DoubleRGBColor) -> DoubleRGBColor {
-        return merge(rhs, transformColor: {(m, i) in i == 0 ? percentageMax : (m / i).asPercentage})!
-    }
-    
-    public var toInverse: DoubleRGBColor {
-        return map(transformColor: {percentageMax - $0})!
-    }
-    public var toComplement: DoubleRGBColor {
-        let (r, g, b) = rawValue
-        let key = max(r, g, b) + min(r, g, b)
-        return map(transformColor: {(key - $0).asPercentage})!
-    }
-    
+}
+
+extension DoubleRGBColor: CustomStringConvertible {
     public var description: String {
         let (r, g, b) = rawValue
         return "DoubleRGBColor <red: \(r)%, green: \(g)%, blue: \(b)%, alpha: \(alpha)%>"

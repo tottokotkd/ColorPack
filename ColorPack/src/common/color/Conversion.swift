@@ -23,6 +23,9 @@ extension ColorProtocol {
         let blue = Double(b) / Double(rgbMax) * percentageMax
         return (Percentage(red), Percentage(green), Percentage(blue))
     }
+    public var toHSL: (hue: Degree?, saturation: Percentage, lightness: Percentage) {
+        let (red, green, blue) = toDoubleRGB
+        return getHSL(red: red, green: green, blue: blue)
     }
     public var toHexString: String {
         let (r, g, b) = toIntRGB

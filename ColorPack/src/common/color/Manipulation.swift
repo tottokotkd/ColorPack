@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension ColorProtocol {
+extension ColorManipulationProtocol {
     public func map(_ transform: (T) throws -> T) rethrows -> Self? {
         let newValue = try transform(rawValue)
         return Self(rawValue: newValue, alpha: alpha)
