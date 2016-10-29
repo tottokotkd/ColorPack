@@ -45,7 +45,7 @@ public struct HSLColor: HSLColorProtocol, ColorStructConvertor {
 
 extension HSLColor: ColorManipulationProtocol {}
 
-extension HSLColor: ColorSchemeProtocol {
+extension HSLColor: ColorConversionProtocol {
     public var toInverse: HSLColor {
         return map({(hue: Degree?, saturation: Percentage, lightness: Percentage) in
             let newHue = hue.map{($0 + (degreeMax / 2)).asDegree}

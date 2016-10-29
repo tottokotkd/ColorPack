@@ -8,18 +8,20 @@
 
 import Foundation
 
-public protocol ColorProtocol: Equatable {
-    associatedtype T
-    var rawValue: T {get}
-    var alpha: Percentage {get}
-    
-    init?(rawValue: T, alpha: Double)
-    
+public protocol ColorDataContainerProtocol {
     // conversion
     var toIntRGBData: IntRGBData {get}
     var toDoubleRGBData: DoubleRGBData {get}
     var toHSLData: HSLData {get}
     var toHexString: String {get}
+}
+
+public protocol ColorProtocol: ColorDataContainerProtocol, Equatable {
+    associatedtype T
+    var rawValue: T {get}
+    var alpha: Percentage {get}
+    
+    init?(rawValue: T, alpha: Double)
 }
 
 public protocol ColorCalculationProtocol: ColorProtocol {
@@ -48,7 +50,7 @@ public protocol ColorManipulationProtocol: ColorProtocol {
     func withAlpha(_ alpha: Percentage) -> Self?
 }
 
-public protocol ColorSchemeProtocol: ColorProtocol {
+public protocol ColorConversionProtocol: ColorProtocol {
     var toInverse: Self {get}
     var toComplementary: Self {get}
     var toAnalogous: (upper: Self, lower: Self) {get}
@@ -68,6 +70,6 @@ protocol DoubleRGBColorProtocol: ColorProtocol, ColorCalculationProtocol, ColorM
     func merge(_ rhs: Self, transformColor: (Percentage, Percentage) throws -> Percentage) rethrows -> Self?
 }
 
-protocol HSLColorProtocol: ColorProtocol, ColorManipulationProtocol, ColorSchemeProtocol {
+protocol HSLColorProtocol: ColorProtocol, ColorManipulationProtocol, ColorConversionProtocol {
     var rawValue: (hue: Degree?, saturation: Percentage, lightness: Percentage) {get}
 }

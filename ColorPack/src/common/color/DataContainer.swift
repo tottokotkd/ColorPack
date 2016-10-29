@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension ColorProtocol {
+extension ColorDataContainerProtocol {
     public var toIntRGBData: IntRGBData {
         let (r, g, b) = toDoubleRGBData
         let red = r / percentageMax * Double(rgbMax)

@@ -60,8 +60,8 @@
 		92C61F5E1DC056FA0049B826 /* Manipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C61F461DC03F390049B826 /* Manipulation.swift */; };
 		92C61F641DC066310049B826 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C61F621DC066310049B826 /* Operator.swift */; };
 		92C61F651DC066310049B826 /* Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C61F621DC066310049B826 /* Operator.swift */; };
-		92C61F661DC066310049B826 /* Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C61F631DC066310049B826 /* Conversion.swift */; };
-		92C61F671DC066310049B826 /* Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C61F631DC066310049B826 /* Conversion.swift */; };
+		92C61F661DC066310049B826 /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C61F631DC066310049B826 /* DataContainer.swift */; };
+		92C61F671DC066310049B826 /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C61F631DC066310049B826 /* DataContainer.swift */; };
 		92E58FB51DBC7E980052AEC6 /* ColorPack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92DAEDEB1DBB9F1800098CE5 /* ColorPack.framework */; };
 /* End PBXBuildFile section */
 
@@ -112,7 +112,7 @@
 		92C61F4A1DC03FF80049B826 /* JapaneseColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JapaneseColors.swift; path = src/common/library/JapaneseColors.swift; sourceTree = "<group>"; };
 		92C61F4B1DC03FF80049B826 /* WebSafeColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebSafeColors.swift; path = src/common/library/WebSafeColors.swift; sourceTree = "<group>"; };
 		92C61F621DC066310049B826 /* Operator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Operator.swift; path = src/common/color/Operator.swift; sourceTree = "<group>"; };
-		92C61F631DC066310049B826 /* Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Conversion.swift; path = src/common/color/Conversion.swift; sourceTree = "<group>"; };
+		92C61F631DC066310049B826 /* DataContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataContainer.swift; path = src/common/color/DataContainer.swift; sourceTree = "<group>"; };
 		92DAEDDD1DBB9EDE00098CE5 /* ColorPack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ColorPack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92DAEDEB1DBB9F1800098CE5 /* ColorPack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ColorPack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92DAEE271DBBA56400098CE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				929504071DC2D91B00E59F57 /* ColorProtocol.swift */,
-				92C61F631DC066310049B826 /* Conversion.swift */,
+				92C61F631DC066310049B826 /* DataContainer.swift */,
 				92C61F461DC03F390049B826 /* Manipulation.swift */,
 				92C61F621DC066310049B826 /* Operator.swift */,
 				929504021DC1DA6F00E59F57 /* Definition.swift */,
@@ -551,7 +551,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92C61F471DC03F390049B826 /* Manipulation.swift in Sources */,
-				92C61F661DC066310049B826 /* Conversion.swift in Sources */,
+				92C61F661DC066310049B826 /* DataContainer.swift in Sources */,
 				928EF07B1DC1D7F2000A0B4B /* IntColor.swift in Sources */,
 				92B475181DBF82DB0017452B /* WebSafe.swift in Sources */,
 				92C61F501DC03FF80049B826 /* JapaneseColors.swift in Sources */,
@@ -581,7 +581,7 @@
 				92B474B21DBEDE860017452B /* NSColor.swift in Sources */,
 				9223771C1DC306D100C93C0C /* WebSafe.swift in Sources */,
 				928EF0781DC1D7F2000A0B4B /* DoubleColor.swift in Sources */,
-				92C61F671DC066310049B826 /* Conversion.swift in Sources */,
+				92C61F671DC066310049B826 /* DataContainer.swift in Sources */,
 				922377201DC306D700C93C0C /* WebSafeColors.swift in Sources */,
 				92C61F651DC066310049B826 /* Operator.swift in Sources */,
 				922377221DC306D700C93C0C /* JapaneseColors.swift in Sources */,

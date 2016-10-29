@@ -21,10 +21,10 @@ public func *<C: ColorCalculationProtocol>(lhs: C, rhs: C) -> C {
 public func /<C: ColorCalculationProtocol>(lhs: C, rhs: C) -> C {
     return lhs.divide(rhs)
 }
-public prefix func !<C: ColorSchemeProtocol>(lhs: C) -> C {
+public prefix func !<C: ColorConversionProtocol>(lhs: C) -> C {
     return lhs.toComplementary
 }
-public prefix func ~<C: ColorSchemeProtocol>(lhs: C) -> C {
+public prefix func ~<C: ColorConversionProtocol>(lhs: C) -> C {
     return lhs.toInverse
 }
 
