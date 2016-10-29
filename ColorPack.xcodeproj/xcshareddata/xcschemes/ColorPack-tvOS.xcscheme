@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92DAEDEA1DBB9F1800098CE5"
+               BlueprintIdentifier = "92B297801DC474A100A95AEB"
                BuildableName = "ColorPack.framework"
-               BlueprintName = "ColorPack-macOS"
+               BlueprintName = "ColorPack-tvOS"
                ReferencedContainer = "container:ColorPack.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,9 +28,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92E58FAF1DBC7E980052AEC6"
-               BuildableName = "ColorPackTests-macOS.xctest"
-               BlueprintName = "ColorPackTests-macOS"
+               BlueprintIdentifier = "92B297881DC474A100A95AEB"
+               BuildableName = "ColorPackTests-tvOS.xctest"
+               BlueprintName = "ColorPackTests-tvOS"
                ReferencedContainer = "container:ColorPack.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,9 +46,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92E58FAF1DBC7E980052AEC6"
-               BuildableName = "ColorPackTests-macOS.xctest"
-               BlueprintName = "ColorPackTests-macOS"
+               BlueprintIdentifier = "92B297881DC474A100A95AEB"
+               BuildableName = "ColorPackTests-tvOS.xctest"
+               BlueprintName = "ColorPackTests-tvOS"
                ReferencedContainer = "container:ColorPack.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -56,9 +56,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92DAEDEA1DBB9F1800098CE5"
+            BlueprintIdentifier = "92B297801DC474A100A95AEB"
             BuildableName = "ColorPack.framework"
-            BlueprintName = "ColorPack-macOS"
+            BlueprintName = "ColorPack-tvOS"
             ReferencedContainer = "container:ColorPack.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -78,9 +78,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92DAEDEA1DBB9F1800098CE5"
+            BlueprintIdentifier = "92B297801DC474A100A95AEB"
             BuildableName = "ColorPack.framework"
-            BlueprintName = "ColorPack-macOS"
+            BlueprintName = "ColorPack-tvOS"
             ReferencedContainer = "container:ColorPack.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -96,9 +96,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92DAEDEA1DBB9F1800098CE5"
+            BlueprintIdentifier = "92B297801DC474A100A95AEB"
             BuildableName = "ColorPack.framework"
-            BlueprintName = "ColorPack-macOS"
+            BlueprintName = "ColorPack-tvOS"
             ReferencedContainer = "container:ColorPack.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -10,7 +10,11 @@ import UIKit
 
 extension ColorProtocol {
     public var toUIColor: UIColor {
-        let (r, g, b) = toFloatRGB
-        return UIColor(colorLiteralRed: r, green: g, blue: b, alpha: Float(alpha))
+        let (r, g, b) = toDoubleRGBData
+        let red = r / percentageMax
+        let green = g / percentageMax
+        let blue = b / percentageMax
+        let newAlpha = alpha / percentageMax
+        return UIColor(colorLiteralRed: Float(red), green: Float(green), blue: Float(blue), alpha: Float(newAlpha))
     }
 }

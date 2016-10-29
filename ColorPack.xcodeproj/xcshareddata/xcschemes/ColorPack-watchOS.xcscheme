@@ -3,7 +3,7 @@
    LastUpgradeVersion = "0800"
    version = "1.3">
    <BuildAction
-      parallelizeBuildables = "NO"
+      parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92DAEDEA1DBB9F1800098CE5"
+               BlueprintIdentifier = "92B297671DC4746000A95AEB"
                BuildableName = "ColorPack.framework"
-               BlueprintName = "ColorPack-macOS"
-               ReferencedContainer = "container:ColorPack.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92E58FAF1DBC7E980052AEC6"
-               BuildableName = "ColorPackTests-macOS.xctest"
-               BlueprintName = "ColorPackTests-macOS"
+               BlueprintName = "ColorPack-watchOS"
                ReferencedContainer = "container:ColorPack.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92E58FAF1DBC7E980052AEC6"
-               BuildableName = "ColorPackTests-macOS.xctest"
-               BlueprintName = "ColorPackTests-macOS"
-               ReferencedContainer = "container:ColorPack.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92DAEDEA1DBB9F1800098CE5"
-            BuildableName = "ColorPack.framework"
-            BlueprintName = "ColorPack-macOS"
-            ReferencedContainer = "container:ColorPack.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -78,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92DAEDEA1DBB9F1800098CE5"
+            BlueprintIdentifier = "92B297671DC4746000A95AEB"
             BuildableName = "ColorPack.framework"
-            BlueprintName = "ColorPack-macOS"
+            BlueprintName = "ColorPack-watchOS"
             ReferencedContainer = "container:ColorPack.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -96,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92DAEDEA1DBB9F1800098CE5"
+            BlueprintIdentifier = "92B297671DC4746000A95AEB"
             BuildableName = "ColorPack.framework"
-            BlueprintName = "ColorPack-macOS"
+            BlueprintName = "ColorPack-watchOS"
             ReferencedContainer = "container:ColorPack.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

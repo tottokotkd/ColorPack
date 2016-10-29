@@ -9,26 +9,26 @@
 import Foundation
 
 extension ColorFactory {
-    public static func hex(red: Hex, green: Hex, blue: Hex) -> ColorProtocol {
-        return Color.create(red: red.rawValue, green: green.rawValue, blue: blue.rawValue)!
+    public static func hex(red: HexKey, green: HexKey, blue: HexKey) -> IntRGBColor {
+        return Self.create(red: red.rawValue, green: green.rawValue, blue: blue.rawValue)!
     }
-    public static func hex(keys: HexKeys) -> ColorProtocol {
-        return Color.create(red: keys.red.rawValue, green: keys.green.rawValue, blue: keys.blue.rawValue)!
+    public static func hex(keys: HexKeys) -> IntRGBColor {
+        return Self.create(red: keys.red.rawValue, green: keys.green.rawValue, blue: keys.blue.rawValue)!
     }
 }
 
 public struct HexKeys {
-    let red: Hex
-    let green: Hex
-    let blue: Hex
-    init(_ r: Hex, _ g: Hex, _ b: Hex) {
+    let red: HexKey
+    let green: HexKey
+    let blue: HexKey
+    init(_ r: HexKey, _ g: HexKey, _ b: HexKey) {
         red = r
         green = g
         blue = b
     }
 }
 
-public enum Hex: Int {
+public enum HexKey: RGB {
     case x00 = 0
     case x01 = 1
     case x02 = 2

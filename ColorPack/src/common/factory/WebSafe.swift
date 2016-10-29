@@ -9,12 +9,12 @@
 import Foundation
 
 extension ColorFactory {
-    public static func webSafe(red: WebSafeColorKey, green: WebSafeColorKey, blue: WebSafeColorKey) -> ColorProtocol {
-        return Color.create(red: red.rawValue, green: green.rawValue, blue: blue.rawValue)!
+    public static func webSafe(red: WebSafeColorKey, green: WebSafeColorKey, blue: WebSafeColorKey) -> IntRGBColor {
+        return Self.create(red: red.rawValue, green: green.rawValue, blue: blue.rawValue)!
     }
 }
 
-public enum WebSafeColorKey: Int {
+public enum WebSafeColorKey: RGB {
     case k0 = 0x0
     case k3 = 0x33
     case k6 = 0x66
