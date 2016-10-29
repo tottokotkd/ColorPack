@@ -78,6 +78,14 @@ extension DoubleRGBColor: ColorManipulationProtocol {
     }
 }
 
+extension DoubleRGBColor: Equatable {
+    public static func ==(lhs: DoubleRGBColor, rhs: DoubleRGBColor) -> Bool {
+        let (r1, g1, b1) = lhs.rawValue
+        let (r2, g2, b2) = rhs.rawValue
+        return r1 == r2 && g1 == g2 && b1 == b2 && lhs.alpha == rhs.alpha
+    }
+}
+
 extension DoubleRGBColor: CustomStringConvertible {
     public var description: String {
         let (r, g, b) = rawValue

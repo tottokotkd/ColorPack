@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol ColorProtocol {
+public protocol ColorProtocol: Equatable {
     associatedtype T
     var rawValue: T {get}
     var alpha: Percentage {get}

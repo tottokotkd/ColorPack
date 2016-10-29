@@ -106,6 +106,14 @@ extension HSLColor: ColorSchemeProtocol {
     }
 }
 
+extension HSLColor: Equatable {
+    public static func ==(lhs: HSLColor, rhs: HSLColor) -> Bool {
+        let (h1, s1, l1) = lhs.rawValue
+        let (h2, s2, l2) = rhs.rawValue
+        return h1 == h2 && s1 == s2 && l1 == l2 && lhs.alpha == rhs.alpha
+    }
+}
+
 extension HSLColor: CustomStringConvertible {
     public var description: String {
         let (h, s, l) = rawValue
