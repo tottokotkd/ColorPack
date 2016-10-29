@@ -9,29 +9,32 @@
 import XCTest
 import ColorPack
 
-class FactoryTests: XCTestCase {
-    
+protocol ColorFactoryTestSpec: TestHelper {
+    func testOfDecimalRGBFactory()
+    func testOfHexRGBFactory()
+    func testOfWebSafeFactory()
+}
+
+class FactoryTests: XCTestCase, ColorFactoryTestSpec {
     func testOfDecimalRGBFactory() {
         do {
             let color = Color.rgb(red: .d102, green: .d51, blue: .d255)
-            XCTAssertEqual(102, color.toIntRGB.red)
-            XCTAssertEqual(51, color.toIntRGB.green)
-            XCTAssertEqual(255, color.toIntRGB.blue)
+            let expected = Color.create(red: 102, green: 51, blue: 255)!
+            assertEqualColor(expected, color)
         }
     }
     func testOfHexRGBFactory() {
         do {
             let color = Color.hex(red: .x66, green: .x33, blue: .xFF)
-            XCTAssertEqual(102, color.toIntRGB.red)
-            XCTAssertEqual(51, color.toIntRGB.green)
-            XCTAssertEqual(255, color.toIntRGB.blue)        }
+            let expected = Color.create(red: 102, green: 51, blue: 255)!
+            assertEqualColor(expected, color)
+        }
     }
     func testOfWebSafeFactory() {
         do {
             let color = Color.webSafe(red: .k0, green: .kC, blue: .kF)
-            XCTAssertEqual(0, color.toIntRGB.red)
-            XCTAssertEqual(204, color.toIntRGB.green)
-            XCTAssertEqual(255, color.toIntRGB.blue)
+            let expected = Color.create(red: 0, green: 204, blue: 255)!
+            assertEqualColor(expected, color)
         }
     }
 }
