@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' display-mode='raw'>
+<playground version='6.0' target-platform='ios' display-mode='rendered'>
     <pages>
-        <page name='Introduce'/>
-        <page name='Untitled Page 3'/>
-        <page name='test page'/>
+        <page name='Introduction'/>
+        <page name='Color Models'/>
+        <page name='Data Creation'/>
+        <page name='Conversion'/>
+        <page name='Calculation'/>
+        <page name='Manipulation'/>
+        <page name='Operators'/>
     </pages>
 </playground>
