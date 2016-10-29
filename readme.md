@@ -12,7 +12,7 @@ click `clone or download`
 1. add ColorPack to `Cartfile`
 
     ```
-    github "tottokotkd/ColorPack" "1.1"
+    github "tottokotkd/ColorPack" "2.0"
     ```
 
 2. `carthage update`
