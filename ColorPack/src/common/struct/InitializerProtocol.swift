@@ -23,12 +23,12 @@ public protocol HSLColorInitializer {
     static func truncate(hue: Degree?, saturation: Percentage, lightness: Percentage, alpha: Percentage) -> HSLColor
 }
 public protocol ColorStructConvertor: ColorProtocol, ColorFactory {
-    var toIntRGB: IntRGBColor {get}
+    var toIntRGBColor: IntRGBColor {get}
     var toDoubleRGBColor: DoubleRGBColor {get}
     var toHSLColor: HSLColor {get}
 }
 extension ColorStructConvertor {
-    public var toIntRGB: IntRGBColor {
+    public var toIntRGBColor: IntRGBColor {
         let (red, green, blue) = toIntRGB
         return Color.create(red: red, green: green, blue: blue, alpha: alpha)!
     }

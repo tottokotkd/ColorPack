@@ -37,7 +37,7 @@ public func getHSL(red: Percentage, green: Percentage, blue: Percentage) -> (hue
         return (maxColor + minColor) / 2
     }
     func getSaturation(chroma: Percentage, lightness: Percentage) -> Percentage {
-        if lightness == percentageMax {
+        if lightness == percentageMax || lightness == 0 {
             return 0
         } else {
             return chroma / (percentageMax - abs(2 * lightness - percentageMax)) * percentageMax
@@ -46,7 +46,7 @@ public func getHSL(red: Percentage, green: Percentage, blue: Percentage) -> (hue
     let (chroma, hue) = getHue(red: red, green: green, blue: blue)
     let lightness = getLightness(red: red, green: green, blue: blue)
     let saturation = getSaturation(chroma: chroma, lightness: lightness)
-    return (hue: hue, saturation: saturation, lightness: lightness)
+    return (hue: hue?.asDegree, saturation: saturation, lightness: lightness)
 }
 
 /// (Hue [0 ~ 360 degree], Saturation & Lightness [0% ~ 100%]) -> RGB [0% ~ 100%]

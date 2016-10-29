@@ -36,7 +36,7 @@ public struct HSLColor: HSLColorProtocol, ColorStructConvertor {
             return nil
         }
     }
-    public var toHSLColor: T {return rawValue}
+    public var toHSL: T {return rawValue}
     public var toDoubleRGB: (red: Percentage, green: Percentage, blue: Percentage) {
         let (hue, saturation, lightness) = rawValue
         return getRGB(hue: hue, saturation: saturation, lightness: lightness)

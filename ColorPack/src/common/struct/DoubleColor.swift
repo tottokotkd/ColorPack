@@ -50,7 +50,7 @@ extension DoubleRGBColor: ColorCalculationProtocol {
         return merge(rhs, transformColor: {(m, i) in (m - i).asPercentage})!
     }
     public func multiply(_ rhs: DoubleRGBColor) -> DoubleRGBColor {
-        return merge(rhs, transformColor: {(m, i) in (m * i / percentageMax).asPercentage})!
+        return merge(rhs, transformColor: {(m, i) in (m * i).asPercentage})!
     }
     public func divide(_ rhs: DoubleRGBColor) -> DoubleRGBColor {
         return merge(rhs, transformColor: {(m, i) in i == 0 ? percentageMax : (m / i).asPercentage})!
