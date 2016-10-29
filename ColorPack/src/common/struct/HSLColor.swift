@@ -21,7 +21,7 @@ extension HSLColorInitializer {
 }
 
 public struct HSLColor: HSLColorProtocol, ColorStructConvertor {
-    public typealias T = (hue: Degree?, saturation: Percentage, lightness: Percentage)
+    public typealias T = HSLData
     public let rawValue: T
     public let alpha: Percentage
     

@@ -13,17 +13,20 @@ public typealias RGB = Int
 public let rgbMin = 0
 public let rgbMax = 255
 public let rgbRange = rgbMin...rgbMax
+public typealias IntRGBData = (red: RGB, green: RGB, blue: RGB)
 
 public typealias Hex = Int
 public let hexMin = 0x000000
 public let hexMax = 0xFFFFFF
 public let hexRange = hexMin...hexMax
+public typealias DoubleRGBData = (red: Percentage, green: Percentage, blue: Percentage)
 
 /// 0...100
 public typealias Percentage = Double
 public let percentageMin: Percentage = 0.0
 public let percentageMax: Percentage = 100.0
 public let percentageRange = percentageMin...percentageMax
+public typealias HSLData = (hue: Degree?, saturation: Percentage, lightness: Percentage)
 
 /// 0..<360
 public typealias Degree = Double

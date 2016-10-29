@@ -24,7 +24,7 @@ extension DoubleRGBColorInitializer {
 }
 
 public struct DoubleRGBColor: DoubleRGBColorProtocol, ColorStructConvertor {
-    public typealias T = (red: Percentage, green: Percentage, blue: Percentage)
+    public typealias T = DoubleRGBData
     public let rawValue: T
     public let alpha: Percentage
     

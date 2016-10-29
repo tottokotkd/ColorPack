@@ -24,7 +24,7 @@ extension IntRGBColorInitializer {
 }
 
 public struct IntRGBColor: IntRGBColorProtocol, ColorStructConvertor {
-    public typealias T = (red: RGB, green: RGB, blue: RGB)
+    public typealias T = IntRGBData
     public let rawValue: T
     public let alpha: Percentage
     

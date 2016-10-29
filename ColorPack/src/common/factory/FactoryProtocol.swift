@@ -12,8 +12,8 @@ public struct Color: ColorFactory {
 }
 
 public protocol ColorFactory: IntRGBColorInitializer, DoubleRGBColorInitializer, HSLColorInitializer {
-    static func webSafe(red: WebSafeColorKey, green: WebSafeColorKey, blue: WebSafeColorKey) -> IntRGBColor
     static func rgb(red: RGBKey, green: RGBKey, blue: RGBKey) -> IntRGBColor
     static func hex(red: HexKey, green: HexKey, blue: HexKey) -> IntRGBColor
     static func hex(keys: HexKeys) -> IntRGBColor
+    static func webSafe(red: WebSafeColorKey, green: WebSafeColorKey, blue: WebSafeColorKey) -> IntRGBColor
 }
