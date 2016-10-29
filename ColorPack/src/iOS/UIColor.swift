@@ -14,6 +14,7 @@ extension ColorProtocol {
         let red = r / percentageMax
         let green = g / percentageMax
         let blue = b / percentageMax
-        return UIColor(colorLiteralRed: Float(red), green: Float(green), blue: Float(blue), alpha: Float(alpha))
+        let newAlpha = alpha / percentageMax
+        return UIColor(colorLiteralRed: Float(red), green: Float(green), blue: Float(blue), alpha: Float(newAlpha))
     }
 }
