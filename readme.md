@@ -4,10 +4,10 @@ swift color utility & library
 
 ## 1. GET
 
-### (1) manual (classical)
+### (1) manual [classical]
 click `clone or download` 
 
-### (2) Carthage (recommended)
+### (2) Carthage [recommended]
 
 1. add ColorPack to `Cartfile`
 
@@ -21,10 +21,10 @@ click `clone or download`
 
 please check ColorPack.playground
 
-## LICENSE
+## 3. LICENSE
 MIT
 
-## VERSION
+## 4. VERSION
 ### v 1.1 -> 2.0
 * totally remade
 * 'Double RGB' remains, but **Percentage parameters are FROM 0% to 100% (NOT 0.0 to 1.0)** 
