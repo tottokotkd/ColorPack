@@ -70,6 +70,4 @@ protocol DoubleRGBColorProtocol: ColorProtocol, ColorCalculationProtocol, ColorM
 
 protocol HSLColorProtocol: ColorProtocol, ColorManipulationProtocol, ColorSchemeProtocol {
     var rawValue: (hue: Degree?, saturation: Percentage, lightness: Percentage) {get}
-    func map(transformAll: (Double) throws -> Double) rethrows -> Self
-    func merge(_ rhs: HSLColor, transformAll: (Double, Double) throws -> Double) rethrows -> Self
 }

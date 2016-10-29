@@ -43,27 +43,7 @@ public struct HSLColor: HSLColorProtocol, ColorStructConvertor {
     }
 }
 
-extension HSLColor: ColorManipulationProtocol {
-    public func map(transformAll: (Double) throws -> Double) rethrows -> HSLColor {
-        return try map({ v in
-            let (h, s, l) = v
-            let newHue = try h.map{try transformAll($0).asDegree}
-            let newSaturation = try transformAll(s).asPercentage
-            let newLightness = try transformAll(l).asPercentage
-            return (newHue, newSaturation, newLightness)
-        })!
-    }
-    public func merge(_ rhs: HSLColor, transformAll: (Double, Double) throws -> Double) rethrows -> HSLColor {
-        return try merge(rhs, {(v1, v2) in
-            let (h1, s1, l1) = v1
-            let (h2, s2, l2) = v2
-            let newHue = try h1.flatMap{hh1 in try h2.map {hh2 in try transformAll(hh1, hh2).asDegree}}
-            let newSaturation = try transformAll(s1, s2).asPercentage
-            let newLightness = try transformAll(l1, l2).asPercentage
-            return (newHue, newSaturation, newLightness)
-        })!
-    }
-}
+extension HSLColor: ColorManipulationProtocol {}
 
 extension HSLColor: ColorSchemeProtocol {
     public var toInverse: HSLColor {

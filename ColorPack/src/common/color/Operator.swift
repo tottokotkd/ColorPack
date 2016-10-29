@@ -29,15 +29,9 @@ public prefix func ~<C: ColorSchemeProtocol>(lhs: C) -> C {
 }
 
 // 'manipulation' protocol operator
-public func *<C: ColorManipulationProtocol>(lhs: C, rhs: Int) -> C {
-    return lhs * Double(rhs)
-}
 public func *<C: ColorManipulationProtocol>(lhs: C, rhs: Double) -> C {
     let value = (lhs.alpha * rhs).asPercentage
     return lhs.withAlpha(value)!
-}
-public func /<C: ColorManipulationProtocol>(lhs: C, rhs: Int) -> C {
-    return lhs / Double(rhs)
 }
 public func /<C: ColorManipulationProtocol>(lhs: C, rhs: Double) -> C {
     let value = (lhs.alpha / rhs).asPercentage
