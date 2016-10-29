@@ -43,10 +43,9 @@ class IntRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             let alpha = randomPercentage
             let color = Color.create(red: red, green: green, blue: blue, alpha: alpha)!
             let result = color.map{(r, g, b) in (r / 2, g / 3, b / 4)}!
-            XCTAssertEqual(red / 2, result.toIntRGB.red)
-            XCTAssertEqual(green / 3, result.toIntRGB.green)
-            XCTAssertEqual(blue / 4, result.toIntRGB.blue)
-            XCTAssertEqual(alpha, result.alpha)
+            
+            let expected = Color.create(red: red / 2, green: green / 3, blue: blue / 4, alpha: alpha)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let red = randomRGB
@@ -66,10 +65,9 @@ class IntRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             let alpha = randomPercentage
             let color = Color.create(red: red, green: green, blue: blue, alpha: alpha)!
             let result = color.map(transformAlpha:{$0 / 2})!
-            XCTAssertEqual(red, result.toIntRGB.red)
-            XCTAssertEqual(green, result.toIntRGB.green)
-            XCTAssertEqual(blue, result.toIntRGB.blue)
-            XCTAssertEqual(alpha / 2, result.alpha)
+            
+            let expected = Color.create(red: red, green: green, blue: blue, alpha: alpha / 2)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let red = randomRGB
@@ -99,10 +97,12 @@ class IntRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
                 let b = abs(x.blue - y.blue)
                 return (r, g, b)
             }!
-            XCTAssertEqual(abs(red1 - red2), result.toIntRGB.red)
-            XCTAssertEqual(abs(green1 - green2), result.toIntRGB.green)
-            XCTAssertEqual(abs(blue1 - blue2), result.toIntRGB.blue)
-            XCTAssertEqual(alpha1, result.alpha)
+            
+            let expected = Color.create(red: abs(red1 - red2),
+                                        green: abs(green1 - green2),
+                                        blue: abs(blue1 - blue2),
+                                        alpha: alpha1)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let red1 = randomRGB
@@ -137,10 +137,9 @@ class IntRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             let color1 = Color.create(red: red1, green: green1, blue: blue1, alpha: alpha1)!
             let color2 = Color.create(red: red2, green: green2, blue: blue2, alpha: alpha2)!
             let result = color1.merge(color2, transformAlpha: {abs($0 - $1)})!
-            XCTAssertEqual(red1, result.toIntRGB.red)
-            XCTAssertEqual(green1, result.toIntRGB.green)
-            XCTAssertEqual(blue1, result.toIntRGB.blue)
-            XCTAssertEqual(abs(alpha1 - alpha2), result.alpha)
+            
+            let expected = Color.create(red: red1, green: green1, blue: blue1, alpha: abs(alpha1 - alpha2))!
+            XCTAssertEqual(expected, result)
         }
         do {
             let red1 = randomRGB
@@ -170,10 +169,9 @@ class IntRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             let alpha = randomPercentage
             let color = Color.create(red: red, green: green, blue: blue, alpha: alpha)!
             let result = color.map(transformColor: {$0 / 2})!
-            XCTAssertEqual(red / 2, result.toIntRGB.red)
-            XCTAssertEqual(green / 2, result.toIntRGB.green)
-            XCTAssertEqual(blue / 2, result.toIntRGB.blue)
-            XCTAssertEqual(alpha, result.alpha)
+            
+            let expected = Color.create(red: red / 2, green: green / 2, blue: blue / 2, alpha: alpha)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let red = randomRGB
@@ -199,10 +197,12 @@ class IntRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             let color1 = Color.create(red: red1, green: green1, blue: blue1, alpha: alpha1)!
             let color2 = Color.create(red: red2, green: green2, blue: blue2, alpha: alpha2)!
             let result = color1.merge(color2, transformColor: {abs($0 - $1)})!
-            XCTAssertEqual(abs(red1 - red2), result.toIntRGB.red)
-            XCTAssertEqual(abs(green1 - green2), result.toIntRGB.green)
-            XCTAssertEqual(abs(blue1 - blue2), result.toIntRGB.blue)
-            XCTAssertEqual(alpha1, result.alpha)
+            
+            let expected = Color.create(red: abs(red1 - red2),
+                                        green: abs(green1 - green2),
+                                        blue: abs(blue1 - blue2),
+                                        alpha: alpha1)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let red1 = randomRGB
@@ -233,10 +233,9 @@ class DoubleRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             let alpha = randomPercentage
             let color = Color.create(red: red, green: green, blue: blue, alpha: alpha)!
             let result = color.map{(r, g, b) in (r / 2, g / 3, b / 4)}!
-            XCTAssertEqual(red / 2, result.toDoubleRGB.red)
-            XCTAssertEqual(green / 3, result.toDoubleRGB.green)
-            XCTAssertEqual(blue / 4, result.toDoubleRGB.blue)
-            XCTAssertEqual(alpha, result.alpha)
+            
+            let expected = Color.create(red: red / 2, green: green / 3, blue: blue / 4, alpha: alpha)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let red = randomPercentage
@@ -256,10 +255,9 @@ class DoubleRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             let alpha = randomPercentage
             let color = Color.create(red: red, green: green, blue: blue, alpha: alpha)!
             let result = color.map(transformAlpha:{$0 / 2})!
-            XCTAssertEqual(red, result.toDoubleRGB.red)
-            XCTAssertEqual(green, result.toDoubleRGB.green)
-            XCTAssertEqual(blue, result.toDoubleRGB.blue)
-            XCTAssertEqual(alpha / 2, result.alpha)
+            
+            let expected = Color.create(red: red, green: green, blue: blue, alpha: alpha / 2)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let red = randomPercentage
@@ -289,10 +287,12 @@ class DoubleRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
                 let b = abs(x.blue - y.blue)
                 return (r, g, b)
                 }!
-            XCTAssertEqual(abs(red1 - red2), result.toDoubleRGB.red)
-            XCTAssertEqual(abs(green1 - green2), result.toDoubleRGB.green)
-            XCTAssertEqual(abs(blue1 - blue2), result.toDoubleRGB.blue)
-            XCTAssertEqual(alpha1, result.alpha)
+            
+            let expected = Color.create(red: abs(red1 - red2),
+                                        green: abs(green1 - green2),
+                                        blue: abs(blue1 - blue2),
+                                        alpha: alpha1)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let red1 = randomPercentage
@@ -327,10 +327,9 @@ class DoubleRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             let color1 = Color.create(red: red1, green: green1, blue: blue1, alpha: alpha1)!
             let color2 = Color.create(red: red2, green: green2, blue: blue2, alpha: alpha2)!
             let result = color1.merge(color2, transformAlpha: {abs($0 - $1)})!
-            XCTAssertEqual(red1, result.toDoubleRGB.red)
-            XCTAssertEqual(green1, result.toDoubleRGB.green)
-            XCTAssertEqual(blue1, result.toDoubleRGB.blue)
-            XCTAssertEqual(abs(alpha1 - alpha2), result.alpha)
+            
+            let expected = Color.create(red: red1, green: green1, blue: blue1, alpha: abs(alpha1 - alpha2))!
+            XCTAssertEqual(expected, result)
         }
         do {
             let red1 = randomPercentage
@@ -360,10 +359,9 @@ class DoubleRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             let alpha = randomPercentage
             let color = Color.create(red: red, green: green, blue: blue, alpha: alpha)!
             let result = color.map(transformColor: {$0 / 2})!
-            XCTAssertEqual(red / 2, result.toDoubleRGB.red)
-            XCTAssertEqual(green / 2, result.toDoubleRGB.green)
-            XCTAssertEqual(blue / 2, result.toDoubleRGB.blue)
-            XCTAssertEqual(alpha, result.alpha)
+            
+            let expected = Color.create(red: red / 2, green: green / 2, blue: blue / 2, alpha: alpha)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let red = randomPercentage
@@ -389,10 +387,12 @@ class DoubleRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             let color1 = Color.create(red: red1, green: green1, blue: blue1, alpha: alpha1)!
             let color2 = Color.create(red: red2, green: green2, blue: blue2, alpha: alpha2)!
             let result = color1.merge(color2, transformColor: {abs($0 - $1)})!
-            XCTAssertEqual(abs(red1 - red2), result.toDoubleRGB.red)
-            XCTAssertEqual(abs(green1 - green2), result.toDoubleRGB.green)
-            XCTAssertEqual(abs(blue1 - blue2), result.toDoubleRGB.blue)
-            XCTAssertEqual(alpha1, result.alpha)
+            
+            let expected = Color.create(red: abs(red1 - red2),
+                                        green: abs(green1 - green2),
+                                        blue: abs(blue1 - blue2),
+                                        alpha: alpha1)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let red1 = randomPercentage
@@ -423,10 +423,9 @@ class HSLColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             let alpha = randomPercentage
             let color = Color.create(hue: hue, saturation: saturation, lightness: lightness, alpha: alpha)!
             let result = color.map{(h, s, l) in (h.map{$0 / 2}, s / 3, l / 4)}!
-            XCTAssertEqual(hue.map{$0 / 2}, result.toHSL.hue)
-            XCTAssertEqual(saturation / 3, result.toHSL.saturation)
-            XCTAssertEqual(lightness / 4, result.toHSL.lightness)
-            XCTAssertEqual(alpha, result.alpha)
+            
+            let expected = Color.create(hue: hue.map{$0 / 2}, saturation: saturation / 3, lightness: lightness / 4, alpha: alpha)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let hue = randomDegree
@@ -446,10 +445,9 @@ class HSLColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             let alpha = randomPercentage
             let color = Color.create(hue: hue, saturation: saturation, lightness: lightness, alpha: alpha)!
             let result = color.map(transformAlpha:{$0 / 2})!
-            XCTAssertEqual(hue, result.toHSL.hue)
-            XCTAssertEqual(saturation, result.toHSL.saturation)
-            XCTAssertEqual(lightness, result.toHSL.lightness)
-            XCTAssertEqual(alpha / 2, result.alpha)
+            
+            let expected = Color.create(hue: hue, saturation: saturation, lightness: lightness, alpha: alpha / 2)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let hue = randomDegree
@@ -479,10 +477,12 @@ class HSLColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
                 let l = abs(x.lightness - y.lightness)
                 return (h, s, l)
                 }!
-            XCTAssertEqual(hue1.flatMap{xh in hue2.map{yh in xh - yh}}.map(abs), result.toHSL.hue)
-            XCTAssertEqual(abs(saturation1 - saturation2), result.toHSL.saturation)
-            XCTAssertEqual(abs(lightness1 - lightness2), result.toHSL.lightness)
-            XCTAssertEqual(alpha1, result.alpha)
+            
+            let expected = Color.create(hue: hue1.flatMap{xh in hue2.map{yh in xh - yh}}.map(abs),
+                                        saturation: abs(saturation1 - saturation2),
+                                        lightness: abs(lightness1 - lightness2),
+                                        alpha: alpha1)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let hue1 = randomDegree
@@ -517,10 +517,9 @@ class HSLColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             let color1 = Color.create(hue: hue1, saturation: saturation1, lightness: lightness1, alpha: alpha1)!
             let color2 = Color.create(hue: hue2, saturation: saturation2, lightness: lightness2, alpha: alpha2)!
             let result = color1.merge(color2, transformAlpha: {abs($0 - $1)})!
-            XCTAssertEqual(hue1, result.toHSL.hue)
-            XCTAssertEqual(saturation1, result.toHSL.saturation)
-            XCTAssertEqual(lightness1, result.toHSL.lightness)
-            XCTAssertEqual(abs(alpha1 - alpha2), result.alpha)
+            
+            let expected = Color.create(hue: hue1, saturation: saturation1, lightness: lightness1, alpha: abs(alpha1 - alpha2))!
+            XCTAssertEqual(expected, result)
         }
         do {
             let hue1 = randomDegree

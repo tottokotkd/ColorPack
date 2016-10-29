@@ -36,8 +36,8 @@ public struct HSLColor: HSLColorProtocol, ColorStructConvertor {
             return nil
         }
     }
-    public var toHSL: T {return rawValue}
-    public var toDoubleRGB: (red: Percentage, green: Percentage, blue: Percentage) {
+    public var toHSLData: T {return rawValue}
+    public var toDoubleRGBData: (red: Percentage, green: Percentage, blue: Percentage) {
         let (hue, saturation, lightness) = rawValue
         return getRGB(hue: hue, saturation: saturation, lightness: lightness)
     }
@@ -97,9 +97,9 @@ extension HSLColor: Equatable {
 extension HSLColor: CustomStringConvertible {
     public var description: String {
         let (h, s, l) = rawValue
-        let hue = h.map{String(format: "%.4f", $0)} ?? "undefined"
+        let hue = h.map{String(format: "%.4f˚", $0)} ?? "undefined"
         let saturation = String(format: "%.4f", s)
         let lightness = String(format: "%.4f", l)
-        return "HSLColor <hue: \(hue)˚, saturation: \(saturation)%, lightness: \(lightness)%, alpha: \(alpha)%>"
+        return "HSLColor <hue: \(hue), saturation: \(saturation)%, lightness: \(lightness)%, alpha: \(alpha)%>"
     }
 }

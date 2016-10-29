@@ -39,7 +39,7 @@ public struct DoubleRGBColor: DoubleRGBColorProtocol, ColorStructConvertor {
             return nil
         }
     }
-    public var toDoubleRGB: T {return rawValue}
+    public var toDoubleRGBData: T {return rawValue}
 }
 
 extension DoubleRGBColor: ColorCalculationProtocol {

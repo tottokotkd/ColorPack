@@ -10,7 +10,7 @@ import AppKit
 
 extension ColorProtocol {
     public var toNSColor: NSColor {
-        let (r, g, b) = toDoubleRGB
+        let (r, g, b) = toDoubleRGBData
         let red = r / percentageMax
         let green = g / percentageMax
         let blue = b / percentageMax

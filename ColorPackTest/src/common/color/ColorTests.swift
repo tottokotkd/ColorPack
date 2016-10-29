@@ -11,9 +11,9 @@ import ColorPack
 
 protocol ColorTestSpec: TestHelper {
     func testOfInitializer()
-    func testOfPropToIntRGB()
-    func testOfPropToDoubleRGB()
-    func testOfPropToHSL()
+    func testOfPropToIntRGBData()
+    func testOfPropToDoubleRGBData()
+    func testOfPropToHSLData()
     func testOfPropToHexString()
     func testOfDescription()
 }
@@ -78,34 +78,34 @@ class IntRGBColorColorConversionTests: XCTestCase, ColorTestSpec {
             XCTAssertEqual(alpha, result.alpha)
         }
     }
-    func testOfPropToIntRGB() {
+    func testOfPropToIntRGBData() {
         do {
             let red = randomRGB
             let green = randomRGB
             let blue = randomRGB
-            let color = Color.create(red: red, green: green, blue: blue)!.toIntRGB
+            let color = Color.create(red: red, green: green, blue: blue)!.toIntRGBData
             XCTAssertEqual(red, color.red)
             XCTAssertEqual(green, color.green)
             XCTAssertEqual(blue, color.blue)
         }
     }
-    func testOfPropToDoubleRGB() {
+    func testOfPropToDoubleRGBData() {
         do {
             let red = randomRGB
             let green = randomRGB
             let blue = randomRGB
-            let color = Color.create(red: red, green: green, blue: blue)!.toDoubleRGB
+            let color = Color.create(red: red, green: green, blue: blue)!.toDoubleRGBData
             XCTAssertEqual(Double(red) / Double(rgbMax) * percentageMax, color.red)
             XCTAssertEqual(Double(green) / Double(rgbMax) * percentageMax, color.green)
             XCTAssertEqual(Double(blue) / Double(rgbMax) * percentageMax, color.blue)
         }
     }
-    func testOfPropToHSL() {
+    func testOfPropToHSLData() {
         do {
             let red = randomRGB
             let green = randomRGB
             let blue = randomRGB
-            let color = Color.create(red: red, green: green, blue: blue)!.toHSL
+            let color = Color.create(red: red, green: green, blue: blue)!.toHSLData
             let (hue, saturation, lightness) = getHSL(red: Double(red) / Double(rgbMax) * percentageMax,
                                                       green: Double(green) / Double(rgbMax) * percentageMax,
                                                       blue: Double(blue) / Double(rgbMax) * percentageMax)
@@ -169,34 +169,34 @@ class DoubleRGBColorColorConversionTests: XCTestCase, ColorTestSpec {
             XCTAssertEqual(alpha, result.alpha)
         }
     }
-    func testOfPropToIntRGB() {
+    func testOfPropToIntRGBData() {
         do {
             let red = randomPercentage
             let green = randomPercentage
             let blue = randomPercentage
-            let color = Color.create(red: red, green: green, blue: blue)!.toIntRGB
+            let color = Color.create(red: red, green: green, blue: blue)!.toIntRGBData
             XCTAssertEqual(Int(red / percentageMax * Double(rgbMax)), color.red)
             XCTAssertEqual(Int(green / percentageMax * Double(rgbMax)), color.green)
             XCTAssertEqual(Int(blue / percentageMax * Double(rgbMax)), color.blue)
         }
     }
-    func testOfPropToDoubleRGB() {
+    func testOfPropToDoubleRGBData() {
         do {
             let red = randomPercentage
             let green = randomPercentage
             let blue = randomPercentage
-            let color = Color.create(red: red, green: green, blue: blue)!.toDoubleRGB
+            let color = Color.create(red: red, green: green, blue: blue)!.toDoubleRGBData
             XCTAssertEqual(red, color.red)
             XCTAssertEqual(green, color.green)
             XCTAssertEqual(blue, color.blue)
         }
     }
-    func testOfPropToHSL() {
+    func testOfPropToHSLData() {
         do {
             let red = randomPercentage
             let green = randomPercentage
             let blue = randomPercentage
-            let color = Color.create(red: red, green: green, blue: blue)!.toHSL
+            let color = Color.create(red: red, green: green, blue: blue)!.toHSLData
             let (hue, saturation, lightness) = getHSL(red: red, green: green, blue: blue)
             XCTAssertEqual(hue, color.hue)
             XCTAssertEqual(saturation, color.saturation)
@@ -267,36 +267,36 @@ class HSLColorColorConversionTests: XCTestCase, ColorTestSpec {
             XCTAssertEqual(alpha, result.alpha)
         }
     }
-    func testOfPropToIntRGB() {
+    func testOfPropToIntRGBData() {
         do {
             let hue = randomDegree
             let saturation = randomPercentage
             let lightness = randomPercentage
-            let color = Color.create(hue: hue, saturation: saturation, lightness: lightness)!.toIntRGB
+            let color = Color.create(hue: hue, saturation: saturation, lightness: lightness)!.toIntRGBData
             let (red, green, blue) = getRGB(hue: hue, saturation: saturation, lightness: lightness)
             XCTAssertEqual(Int(red / percentageMax * Double(rgbMax)), color.red)
             XCTAssertEqual(Int(green / percentageMax * Double(rgbMax)), color.green)
             XCTAssertEqual(Int(blue / percentageMax * Double(rgbMax)), color.blue)
         }
     }
-    func testOfPropToDoubleRGB() {
+    func testOfPropToDoubleRGBData() {
         do {
             let hue = randomDegree
             let saturation = randomPercentage
             let lightness = randomPercentage
-            let color = Color.create(hue: hue, saturation: saturation, lightness: lightness)!.toDoubleRGB
+            let color = Color.create(hue: hue, saturation: saturation, lightness: lightness)!.toDoubleRGBData
             let (red, green, blue) = getRGB(hue: hue, saturation: saturation, lightness: lightness)
             XCTAssertEqual(red, color.red)
             XCTAssertEqual(green, color.green)
             XCTAssertEqual(blue, color.blue)
         }
     }
-    func testOfPropToHSL() {
+    func testOfPropToHSLData() {
         do {
             let hue = randomDegree
             let saturation = randomPercentage
             let lightness = randomPercentage
-            let color = Color.create(hue: hue, saturation: saturation, lightness: lightness)!.toHSL
+            let color = Color.create(hue: hue, saturation: saturation, lightness: lightness)!.toHSLData
             if let h1 = hue, let h2 = color.hue {
                 XCTAssertEqualWithAccuracy(h1, h2, accuracy: 0.001)
             } else {

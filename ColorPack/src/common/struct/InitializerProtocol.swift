@@ -29,15 +29,15 @@ public protocol ColorStructConvertor: ColorProtocol, ColorFactory {
 }
 extension ColorStructConvertor {
     public var toIntRGBColor: IntRGBColor {
-        let (red, green, blue) = toIntRGB
+        let (red, green, blue) = toIntRGBData
         return Color.create(red: red, green: green, blue: blue, alpha: alpha)!
     }
     public var toDoubleRGBColor: DoubleRGBColor {
-        let (red, green, blue) = toDoubleRGB
+        let (red, green, blue) = toDoubleRGBData
         return Color.create(red: red, green: green, blue: blue, alpha: alpha)!
     }
     public var toHSLColor: HSLColor {
-        let (hue, saturation, lightness) = toHSL
+        let (hue, saturation, lightness) = toHSLData
         return Color.create(hue: hue, saturation: saturation, lightness: lightness, alpha: alpha)!
     }
 }

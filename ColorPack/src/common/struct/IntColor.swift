@@ -50,7 +50,7 @@ public struct IntRGBColor: IntRGBColorProtocol, ColorStructConvertor {
             return nil
         }
     }
-    public var toIntRGB: T {return rawValue}
+    public var toIntRGBData: T {return rawValue}
 }
 
 extension IntRGBColor: ColorCalculationProtocol {

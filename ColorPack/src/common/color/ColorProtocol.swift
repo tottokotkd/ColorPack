@@ -16,9 +16,9 @@ public protocol ColorProtocol: Equatable {
     init?(rawValue: T, alpha: Double)
     
     // conversion
-    var toIntRGB: (red: RGB, green: RGB, blue: RGB) {get}
-    var toDoubleRGB: (red: Percentage, green: Percentage, blue: Percentage) {get}
-    var toHSL: (hue: Degree?, saturation: Percentage, lightness: Percentage) {get}
+    var toIntRGBData: IntRGBData {get}
+    var toDoubleRGBData: DoubleRGBData {get}
+    var toHSLData: HSLData {get}
     var toHexString: String {get}
 }
 

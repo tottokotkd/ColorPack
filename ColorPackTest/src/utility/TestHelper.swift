@@ -24,9 +24,9 @@ protocol TestHelper {
 }
 extension TestHelper {
     func assertEqualColor<C: ColorProtocol>(_ a: C, _ b: C) {
-        assertEqualRGB(a.toIntRGB, b.toIntRGB)
-        assertEqualPercentageRGB(a.toDoubleRGB, b.toDoubleRGB)
-        assertEqualHSL(a.toHSL, b.toHSL)
+        assertEqualRGB(a.toIntRGBData, b.toIntRGBData)
+        assertEqualPercentageRGB(a.toDoubleRGBData, b.toDoubleRGBData)
+        assertEqualHSL(a.toHSLData, b.toHSLData)
     }
     func assertEqualRGB(_ a: (RGB, RGB, RGB), _ b: (RGB, RGB, RGB)) {
         XCTAssertEqual(a.0, b.0)
