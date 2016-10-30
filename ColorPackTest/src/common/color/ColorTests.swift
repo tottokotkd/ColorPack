@@ -11,6 +11,8 @@ import ColorPack
 
 protocol ColorTestSpec: TestHelper {
     func testOfInitializer()
+    func testOfColorCreateMethod()
+    func testOfColorTruncateMethod()
     func testOfPropToIntRGBData()
     func testOfPropToDoubleRGBData()
     func testOfPropToHSLData()
@@ -21,50 +23,50 @@ protocol ColorTestSpec: TestHelper {
 /*
     Int RGB Color
  */
-class IntRGBColorColorConversionTests: XCTestCase, ColorTestSpec {
+class IntRGBColorColorTests: XCTestCase, ColorTestSpec {
     func testOfInitializer() {
         do {
-            XCTAssertNotNil(Color.create(red: 0, green: 0, blue: 0))
-            XCTAssertNotNil(Color.create(red: 0, green: 0, blue: 255))
-            XCTAssertNotNil(Color.create(red: 0, green: 255, blue: 0))
-            XCTAssertNotNil(Color.create(red: 0, green: 255, blue: 255))
-            XCTAssertNotNil(Color.create(red: 255, green: 0, blue: 0))
-            XCTAssertNotNil(Color.create(red: 255, green: 0, blue: 255))
-            XCTAssertNotNil(Color.create(red: 255, green: 255, blue: 0))
-            XCTAssertNotNil(Color.create(red: 255, green: 255, blue: 255))
-            XCTAssertNotNil(Color.create(red: -0, green: -0, blue: -0))
+            XCTAssertNotNil(IntRGBColor(red: rgbMin, green: rgbMin, blue: rgbMin, alpha: percentageMax))
+            XCTAssertNotNil(IntRGBColor(red: rgbMin, green: rgbMin, blue: rgbMax, alpha: percentageMax))
+            XCTAssertNotNil(IntRGBColor(red: rgbMin, green: rgbMax, blue: rgbMin, alpha: percentageMax))
+            XCTAssertNotNil(IntRGBColor(red: rgbMin, green: rgbMax, blue: rgbMax, alpha: percentageMax))
+            XCTAssertNotNil(IntRGBColor(red: rgbMax, green: rgbMin, blue: rgbMin, alpha: percentageMax))
+            XCTAssertNotNil(IntRGBColor(red: rgbMax, green: rgbMin, blue: rgbMax, alpha: percentageMax))
+            XCTAssertNotNil(IntRGBColor(red: rgbMax, green: rgbMax, blue: rgbMin, alpha: percentageMax))
+            XCTAssertNotNil(IntRGBColor(red: rgbMax, green: rgbMax, blue: rgbMax, alpha: percentageMax))
+            XCTAssertNotNil(IntRGBColor(red: -rgbMin, green: -rgbMin, blue: -rgbMin, alpha: percentageMax))
 
-            XCTAssertNil(Color.create(red: -1, green: 0, blue: 0))
-            XCTAssertNil(Color.create(red: 0, green: -1, blue: 0))
-            XCTAssertNil(Color.create(red: 0, green: 0, blue: -1))
-            XCTAssertNil(Color.create(red: 256, green: 0, blue: 0))
-            XCTAssertNil(Color.create(red: 0, green: 256, blue: 0))
-            XCTAssertNil(Color.create(red: 0, green: 0, blue: 256))
+            XCTAssertNil(IntRGBColor(red: -1, green: 0, blue: 0, alpha: percentageMax))
+            XCTAssertNil(IntRGBColor(red: 0, green: -1, blue: 0, alpha: percentageMax))
+            XCTAssertNil(IntRGBColor(red: 0, green: 0, blue: -1, alpha: percentageMax))
+            XCTAssertNil(IntRGBColor(red: 256, green: 0, blue: 0, alpha: percentageMax))
+            XCTAssertNil(IntRGBColor(red: 0, green: 256, blue: 0, alpha: percentageMax))
+            XCTAssertNil(IntRGBColor(red: 0, green: 0, blue: 256, alpha: percentageMax))
 
         }
         do {
-            XCTAssertNotNil(Color.create(red: 0, green: 0, blue: 0, alpha: 0))
-            XCTAssertNotNil(Color.create(red: 0, green: 0, blue: 0, alpha: 1.0))
-            XCTAssertNotNil(Color.create(red: 0, green: 0, blue: 0, alpha: -0.0))
+            XCTAssertNotNil(IntRGBColor(red: 0, green: 0, blue: 0, alpha: 0))
+            XCTAssertNotNil(IntRGBColor(red: 0, green: 0, blue: 0, alpha: 1.0))
+            XCTAssertNotNil(IntRGBColor(red: 0, green: 0, blue: 0, alpha: -0.0))
 
-            XCTAssertNil(Color.create(red: 0, green: 0, blue: 0, alpha: -0.1))
-            XCTAssertNil(Color.create(red: 0, green: 0, blue: 0, alpha: 100.1))
+            XCTAssertNil(IntRGBColor(red: 0, green: 0, blue: 0, alpha: -0.1))
+            XCTAssertNil(IntRGBColor(red: 0, green: 0, blue: 0, alpha: 100.1))
         }
         do {
-            XCTAssertNotNil(Color.create(hex: 0x000000))
-            XCTAssertNotNil(Color.create(hex: 0xFFFFFF))
-            XCTAssertNotNil(Color.create(hex: -0x000000))
+            XCTAssertNotNil(IntRGBColor(hex: 0x000000, alpha: percentageMax))
+            XCTAssertNotNil(IntRGBColor(hex: 0xFFFFFF, alpha: percentageMax))
+            XCTAssertNotNil(IntRGBColor(hex: -0x000000, alpha: percentageMax))
 
-            XCTAssertNil(Color.create(hex: -0x000001))
-            XCTAssertNil(Color.create(hex: 0xFFFFFF + 1))
+            XCTAssertNil(IntRGBColor(hex: -0x000001, alpha: percentageMax))
+            XCTAssertNil(IntRGBColor(hex: 0xFFFFFF + 1, alpha: percentageMax))
         }
         do {
-            XCTAssertNotNil(Color.create(hex: 0x000000, alpha: 0))
-            XCTAssertNotNil(Color.create(hex: 0xFFFFFF, alpha: 100.0))
-            XCTAssertNotNil(Color.create(hex: 0x000000, alpha: -0))
+            XCTAssertNotNil(IntRGBColor(hex: 0x000000, alpha: 0))
+            XCTAssertNotNil(IntRGBColor(hex: 0xFFFFFF, alpha: 100.0))
+            XCTAssertNotNil(IntRGBColor(hex: 0x000000, alpha: -0))
 
-            XCTAssertNil(Color.create(hex: -0x000001, alpha: -0.1))
-            XCTAssertNil(Color.create(hex: 0xFFFFFF, alpha: 100.1))
+            XCTAssertNil(IntRGBColor(hex: -0x000001, alpha: -0.1))
+            XCTAssertNil(IntRGBColor(hex: 0xFFFFFF, alpha: 100.1))
         }
         do {
             let red = randomRGB
@@ -76,6 +78,102 @@ class IntRGBColorColorConversionTests: XCTestCase, ColorTestSpec {
             XCTAssertEqual(green, result.rawValue.green)
             XCTAssertEqual(blue, result.rawValue.blue)
             XCTAssertEqual(alpha, result.alpha)
+        }
+    }
+    func testOfColorCreateMethod() {
+        do {
+            let red = randomRGB
+            let green = randomRGB
+            let blue = randomRGB
+            let result = Color.create(red: red, green: green, blue: blue)!
+            let expected = IntRGBColor(red: red, green: green, blue: blue, alpha: percentageMax)!
+            XCTAssertEqual(expected, result)
+        }
+        do {
+            let red = randomRGB
+            let green = randomRGB
+            let blue = randomRGB
+            let hex = red << 16 + green << 8 + blue
+            let result = Color.create(hex: hex)!
+            let expected = IntRGBColor(red: red, green: green, blue: blue, alpha: percentageMax)!
+            XCTAssertEqual(expected, result)
+        }
+        do {
+            let red = randomRGB
+            let green = randomRGB
+            let blue = randomRGB
+            let alpha = randomPercentage
+            let result = Color.create(red: red, green: green, blue: blue, alpha: alpha)!
+            let expected = IntRGBColor(red: red, green: green, blue: blue, alpha: alpha)!
+            XCTAssertEqual(expected, result)
+        }
+        do {
+            let red = randomRGB
+            let green = randomRGB
+            let blue = randomRGB
+            let alpha = randomPercentage
+            let hex = red << 16 + green << 8 + blue
+            let result = Color.create(hex: hex, alpha: alpha)!
+            let expected = IntRGBColor(red: red, green: green, blue: blue, alpha: alpha)!
+            XCTAssertEqual(expected, result)
+        }
+        do {
+            XCTAssertNil(Color.create(red: randomRGB, green: randomRGB, blue: rgbMax + 1))
+            XCTAssertNil(Color.create(red: randomRGB, green: randomRGB, blue: rgbMin - 1))
+            XCTAssertNil(Color.create(red: randomRGB, green: randomRGB, blue: randomRGB, alpha: percentageMax + 1))
+            XCTAssertNil(Color.create(red: randomRGB, green: randomRGB, blue: randomRGB, alpha: percentageMin - 1))
+            XCTAssertNil(Color.create(hex: 0xFFFFFF + 1))
+            XCTAssertNil(Color.create(hex: -1))
+            XCTAssertNil(Color.create(hex: randomHex, alpha: percentageMax + 1))
+            XCTAssertNil(Color.create(hex: randomHex, alpha: percentageMin - 1))
+        }
+    }
+    func testOfColorTruncateMethod() {
+        do {
+            let red = randomRGB
+            let green = randomRGB
+            let blue = randomRGB
+            let result = Color.truncate(red: red, green: green, blue: blue)
+            let expected = Color.create(red: red, green: green, blue: blue)!
+            XCTAssertEqual(expected, result)
+        }
+        do {
+            let red = randomRGB
+            let green = randomRGB
+            let blue = randomRGB
+            let hex = red << 16 + green << 8 + blue
+            let result = Color.truncate(hex: hex)
+            let expected = Color.create(hex: hex)!
+            XCTAssertEqual(expected, result)
+        }
+        do {
+            let red = randomRGB
+            let green = randomRGB
+            let blue = randomRGB
+            let alpha = randomPercentage
+            let result = Color.truncate(red: red, green: green, blue: blue, alpha: alpha)
+            let expected = Color.create(red: red, green: green, blue: blue, alpha: alpha)!
+            XCTAssertEqual(expected, result)
+        }
+        do {
+            let red = randomRGB
+            let green = randomRGB
+            let blue = randomRGB
+            let alpha = randomPercentage
+            let hex = red << 16 + green << 8 + blue
+            let result = Color.truncate(hex: hex, alpha: alpha)
+            let expected = Color.create(hex: hex, alpha: alpha)!
+            XCTAssertEqual(expected, result)
+        }
+        do {
+            XCTAssertNotNil(Color.truncate(red: randomRGB, green: randomRGB, blue: rgbMax + 1))
+            XCTAssertNotNil(Color.truncate(red: randomRGB, green: randomRGB, blue: rgbMin - 1))
+            XCTAssertNotNil(Color.truncate(red: randomRGB, green: randomRGB, blue: randomRGB, alpha: percentageMax + 1))
+            XCTAssertNotNil(Color.truncate(red: randomRGB, green: randomRGB, blue: randomRGB, alpha: percentageMin - 1))
+            XCTAssertNotNil(Color.truncate(hex: 0xFFFFFF + 1))
+            XCTAssertNotNil(Color.truncate(hex: -1))
+            XCTAssertNotNil(Color.truncate(hex: randomHex, alpha: percentageMax + 1))
+            XCTAssertNotNil(Color.truncate(hex: randomHex, alpha: percentageMin - 1))
         }
     }
     func testOfPropToIntRGBData() {
@@ -129,33 +227,54 @@ class IntRGBColorColorConversionTests: XCTestCase, ColorTestSpec {
 /*
     Double RGB Color
  */
-class DoubleRGBColorColorConversionTests: XCTestCase, ColorTestSpec {
+class DoubleRGBColorColorTests: XCTestCase, ColorTestSpec {
     func testOfInitializer() {
         do {
-            XCTAssertNotNil(Color.create(red: 0.0, green: 0.0, blue: 0.0))
-            XCTAssertNotNil(Color.create(red: 0.0, green: 0.0, blue: 100.0))
-            XCTAssertNotNil(Color.create(red: 0.0, green: 1.0, blue: 0.0))
-            XCTAssertNotNil(Color.create(red: 0.0, green: 100.0, blue: 1.0))
-            XCTAssertNotNil(Color.create(red: 100.0, green: 0.0, blue: 0.0))
-            XCTAssertNotNil(Color.create(red: 100.0, green: 0.0, blue: 100.0))
-            XCTAssertNotNil(Color.create(red: 100.0, green: 100.0, blue: 0.0))
-            XCTAssertNotNil(Color.create(red: 100.0, green: 100.0, blue: 100.0))
-            XCTAssertNotNil(Color.create(red: -0.0, green: -0.0, blue: -0.0))
+            XCTAssertNotNil(DoubleRGBColor(red: 0.0, green: 0.0, blue: 0.0, alpha: percentageMax))
+            XCTAssertNotNil(DoubleRGBColor(red: 0.0, green: 0.0, blue: 100.0, alpha: percentageMax))
+            XCTAssertNotNil(DoubleRGBColor(red: 0.0, green: 1.0, blue: 0.0, alpha: percentageMax))
+            XCTAssertNotNil(DoubleRGBColor(red: 0.0, green: 100.0, blue: 1.0, alpha: percentageMax))
+            XCTAssertNotNil(DoubleRGBColor(red: 100.0, green: 0.0, blue: 0.0, alpha: percentageMax))
+            XCTAssertNotNil(DoubleRGBColor(red: 100.0, green: 0.0, blue: 100.0, alpha: percentageMax))
+            XCTAssertNotNil(DoubleRGBColor(red: 100.0, green: 100.0, blue: 0.0, alpha: percentageMax))
+            XCTAssertNotNil(DoubleRGBColor(red: 100.0, green: 100.0, blue: 100.0, alpha: percentageMax))
+            XCTAssertNotNil(DoubleRGBColor(red: -0.0, green: -0.0, blue: -0.0, alpha: percentageMax))
 
-            XCTAssertNil(Color.create(red: -1, green: 0.0, blue: 0.0))
-            XCTAssertNil(Color.create(red: 0.0, green: -1, blue: 0.0))
-            XCTAssertNil(Color.create(red: 0.0, green: 0.0, blue: -1))
-            XCTAssertNil(Color.create(red: 100.1, green: 0.0, blue: 0.0))
-            XCTAssertNil(Color.create(red: 0.0, green: 100.1, blue: 0.0))
-            XCTAssertNil(Color.create(red: 0.0, green: 0.0, blue: 100.1))
+            XCTAssertNil(DoubleRGBColor(red: -1, green: 0.0, blue: 0.0, alpha: percentageMax))
+            XCTAssertNil(DoubleRGBColor(red: 0.0, green: -1, blue: 0.0, alpha: percentageMax))
+            XCTAssertNil(DoubleRGBColor(red: 0.0, green: 0.0, blue: -1, alpha: percentageMax))
+            XCTAssertNil(DoubleRGBColor(red: 100.1, green: 0.0, blue: 0.0, alpha: percentageMax))
+            XCTAssertNil(DoubleRGBColor(red: 0.0, green: 100.1, blue: 0.0, alpha: percentageMax))
+            XCTAssertNil(DoubleRGBColor(red: 0.0, green: 0.0, blue: 100.1, alpha: percentageMax))
         }
         do {
-            XCTAssertNotNil(Color.create(red: 0.0, green: 0.0, blue: 0.0, alpha: 0))
-            XCTAssertNotNil(Color.create(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0))
-            XCTAssertNotNil(Color.create(red: 0, green: 0.0, blue: 0.0, alpha: -0.0))
+            XCTAssertNotNil(DoubleRGBColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0))
+            XCTAssertNotNil(DoubleRGBColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0))
+            XCTAssertNotNil(DoubleRGBColor(red: 0, green: 0.0, blue: 0.0, alpha: -0.0))
 
-            XCTAssertNil(Color.create(red: 0.0, green: 0.0, blue: 0.0, alpha: -0.1))
-            XCTAssertNil(Color.create(red: 0.0, green: 0.0, blue: 0.0, alpha: 100.1))
+            XCTAssertNil(DoubleRGBColor(red: 0.0, green: 0.0, blue: 0.0, alpha: -0.1))
+            XCTAssertNil(DoubleRGBColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 100.1))
+        }
+        do {
+            let red = randomPercentage
+            let green = randomPercentage
+            let blue = randomPercentage
+            let alpha = randomPercentage
+            let result = DoubleRGBColor(red: red, green: green, blue: blue, alpha: alpha)!
+            XCTAssertEqual(red, result.rawValue.red)
+            XCTAssertEqual(green, result.rawValue.green)
+            XCTAssertEqual(blue, result.rawValue.blue)
+            XCTAssertEqual(alpha, result.alpha)
+        }
+    }
+    func testOfColorCreateMethod() {
+        do {
+            let red = randomPercentage
+            let green = randomPercentage
+            let blue = randomPercentage
+            let result = Color.create(red: red, green: green, blue: blue)!
+            let expected = DoubleRGBColor(red: red, green: green, blue: blue, alpha: percentageMax)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let red = randomPercentage
@@ -163,10 +282,39 @@ class DoubleRGBColorColorConversionTests: XCTestCase, ColorTestSpec {
             let blue = randomPercentage
             let alpha = randomPercentage
             let result = Color.create(red: red, green: green, blue: blue, alpha: alpha)!
-            XCTAssertEqual(red, result.rawValue.red)
-            XCTAssertEqual(green, result.rawValue.green)
-            XCTAssertEqual(blue, result.rawValue.blue)
-            XCTAssertEqual(alpha, result.alpha)
+            let expected = DoubleRGBColor(red: red, green: green, blue: blue, alpha: alpha)!
+            XCTAssertEqual(expected, result)
+        }
+        do {
+            XCTAssertNil(Color.create(red: randomPercentage, green: randomPercentage, blue: percentageMax + 1))
+            XCTAssertNil(Color.create(red: randomPercentage, green: randomPercentage, blue: percentageMin - 1))
+            XCTAssertNil(Color.create(red: randomPercentage, green: randomPercentage, blue: randomPercentage, alpha: percentageMax + 1))
+            XCTAssertNil(Color.create(red: randomPercentage, green: randomPercentage, blue: randomPercentage, alpha: percentageMin - 1))
+        }
+    }
+    func testOfColorTruncateMethod() {
+        do {
+            let red = randomPercentage
+            let green = randomPercentage
+            let blue = randomPercentage
+            let result = Color.truncate(red: red, green: green, blue: blue)
+            let expected = Color.create(red: red, green: green, blue: blue)!
+            XCTAssertEqual(expected, result)
+        }
+        do {
+            let red = randomPercentage
+            let green = randomPercentage
+            let blue = randomPercentage
+            let alpha = randomPercentage
+            let result = Color.truncate(red: red, green: green, blue: blue, alpha: alpha)
+            let expected = Color.create(red: red, green: green, blue: blue, alpha: alpha)!
+            XCTAssertEqual(expected, result)
+        }
+        do {
+            XCTAssertNotNil(Color.truncate(red: randomPercentage, green: randomPercentage, blue: percentageMax + 1))
+            XCTAssertNotNil(Color.truncate(red: randomPercentage, green: randomPercentage, blue: percentageMin - 1))
+            XCTAssertNotNil(Color.truncate(red: randomPercentage, green: randomPercentage, blue: randomPercentage, alpha: percentageMax + 1))
+            XCTAssertNotNil(Color.truncate(red: randomPercentage, green: randomPercentage, blue: randomPercentage, alpha: percentageMin - 1))
         }
     }
     func testOfPropToIntRGBData() {
@@ -217,43 +365,62 @@ class DoubleRGBColorColorConversionTests: XCTestCase, ColorTestSpec {
 /*
     HSL RGB Color
  */
-class HSLColorColorConversionTests: XCTestCase, ColorTestSpec {
+class HSLColorColorTests: XCTestCase, ColorTestSpec {
     func testOfInitializer() {
         do {
-            XCTAssertNotNil(Color.create(hue: 0, saturation: 0, lightness: 0))
-            XCTAssertNotNil(Color.create(hue: 0, saturation: 0, lightness: percentageMax))
-            XCTAssertNotNil(Color.create(hue: 0, saturation: percentageMax, lightness: 0))
-            XCTAssertNotNil(Color.create(hue: 0, saturation: percentageMax, lightness: percentageMax))
-            XCTAssertNotNil(Color.create(hue: percentageMax, saturation: 0, lightness: 0))
-            XCTAssertNotNil(Color.create(hue: percentageMax, saturation: 0, lightness: percentageMax))
-            XCTAssertNotNil(Color.create(hue: percentageMax, saturation: percentageMax, lightness: 0))
-            XCTAssertNotNil(Color.create(hue: percentageMax, saturation: percentageMax, lightness: percentageMax))
-            XCTAssertNotNil(Color.create(hue: -0, saturation: -0, lightness: -0))
-            XCTAssertNotNil(Color.create(hue: nil, saturation: 0, lightness: 0))
-            XCTAssertNotNil(Color.create(hue: nil, saturation: 0, lightness: percentageMax))
-            XCTAssertNotNil(Color.create(hue: nil, saturation: percentageMax, lightness: 0))
-            XCTAssertNotNil(Color.create(hue: nil, saturation: percentageMax, lightness: percentageMax))
-            XCTAssertNotNil(Color.create(hue: nil, saturation: -0, lightness: -0))
+            XCTAssertNotNil(HSLColor(hue: 0, saturation: 0, lightness: 0, alpha: percentageMax))
+            XCTAssertNotNil(HSLColor(hue: 0, saturation: 0, lightness: percentageMax, alpha: percentageMax))
+            XCTAssertNotNil(HSLColor(hue: 0, saturation: percentageMax, lightness: 0, alpha: percentageMax))
+            XCTAssertNotNil(HSLColor(hue: 0, saturation: percentageMax, lightness: percentageMax, alpha: percentageMax))
+            XCTAssertNotNil(HSLColor(hue: percentageMax, saturation: 0, lightness: 0, alpha: percentageMax))
+            XCTAssertNotNil(HSLColor(hue: percentageMax, saturation: 0, lightness: percentageMax, alpha: percentageMax))
+            XCTAssertNotNil(HSLColor(hue: percentageMax, saturation: percentageMax, lightness: 0, alpha: percentageMax))
+            XCTAssertNotNil(HSLColor(hue: percentageMax, saturation: percentageMax, lightness: percentageMax, alpha: percentageMax))
+            XCTAssertNotNil(HSLColor(hue: -0, saturation: -0, lightness: -0, alpha: percentageMax))
+            XCTAssertNotNil(HSLColor(hue: nil, saturation: 0, lightness: 0, alpha: percentageMax))
+            XCTAssertNotNil(HSLColor(hue: nil, saturation: 0, lightness: percentageMax, alpha: percentageMax))
+            XCTAssertNotNil(HSLColor(hue: nil, saturation: percentageMax, lightness: 0, alpha: percentageMax))
+            XCTAssertNotNil(HSLColor(hue: nil, saturation: percentageMax, lightness: percentageMax, alpha: percentageMax))
+            XCTAssertNotNil(HSLColor(hue: nil, saturation: -0, lightness: -0, alpha: percentageMax))
 
-            XCTAssertNil(Color.create(red: percentageMin - 1, green: 0.0, blue: 0.0))
-            XCTAssertNil(Color.create(red: 0.0, green: percentageMin - 1, blue: 0.0))
-            XCTAssertNil(Color.create(red: 0.0, green: 0.0, blue: percentageMin - 1))
-            XCTAssertNil(Color.create(red: percentageMax + 1, green: 0.0, blue: 0.0))
-            XCTAssertNil(Color.create(red: 0.0, green: percentageMax + 1, blue: 0.0))
-            XCTAssertNil(Color.create(red: 0.0, green: 0.0, blue: percentageMax + 1))
+            XCTAssertNil(HSLColor(hue: 0.0, saturation: percentageMin - 1, lightness: 0.0, alpha: percentageMax))
+            XCTAssertNil(HSLColor(hue: 0.0, saturation: 0.0, lightness: percentageMin - 1, alpha: percentageMax))
+            XCTAssertNil(HSLColor(hue: 0.0, saturation: percentageMax + 1, lightness: 0.0, alpha: percentageMax))
+            XCTAssertNil(HSLColor(hue: 0.0, saturation: 0.0, lightness: percentageMax + 1, alpha: percentageMax))
         }
         do {
-            XCTAssertNotNil(Color.create(hue: 0, saturation: 0, lightness: 0, alpha: 0))
-            XCTAssertNotNil(Color.create(hue: 0, saturation: 0, lightness: 0, alpha: 1.0))
-            XCTAssertNotNil(Color.create(hue: 0, saturation: 0, lightness: 0, alpha: -0.0))
-            XCTAssertNotNil(Color.create(hue: nil, saturation: 0, lightness: 0, alpha: 0))
-            XCTAssertNotNil(Color.create(hue: nil, saturation: 0, lightness: 0, alpha: 1.0))
-            XCTAssertNotNil(Color.create(hue: nil, saturation: 0, lightness: 0, alpha: -0.0))
+            XCTAssertNotNil(HSLColor(hue: 0, saturation: 0, lightness: 0, alpha: 0))
+            XCTAssertNotNil(HSLColor(hue: 0, saturation: 0, lightness: 0, alpha: 1.0))
+            XCTAssertNotNil(HSLColor(hue: 0, saturation: 0, lightness: 0, alpha: -0.0))
+            XCTAssertNotNil(HSLColor(hue: nil, saturation: 0, lightness: 0, alpha: 0))
+            XCTAssertNotNil(HSLColor(hue: nil, saturation: 0, lightness: 0, alpha: 1.0))
+            XCTAssertNotNil(HSLColor(hue: nil, saturation: 0, lightness: 0, alpha: -0.0))
 
-            XCTAssertNil(Color.create(hue: 0, saturation: 0, lightness: 0, alpha: percentageMax + 1))
-            XCTAssertNil(Color.create(hue: 0, saturation: 0, lightness: 0, alpha: percentageMin - 1))
-            XCTAssertNil(Color.create(hue: nil, saturation: 0, lightness: 0, alpha: percentageMax + 1))
-            XCTAssertNil(Color.create(hue: nil, saturation: 0, lightness: 0, alpha: percentageMin - 1))
+            XCTAssertNil(HSLColor(hue: 0, saturation: 0, lightness: 0, alpha: percentageMax + 1))
+            XCTAssertNil(HSLColor(hue: 0, saturation: 0, lightness: 0, alpha: percentageMin - 1))
+            XCTAssertNil(HSLColor(hue: nil, saturation: 0, lightness: 0, alpha: percentageMax + 1))
+            XCTAssertNil(HSLColor(hue: nil, saturation: 0, lightness: 0, alpha: percentageMin - 1))
+        }
+        do {
+            let hue = randomDegree
+            let saturation = randomPercentage
+            let lightness = randomPercentage
+            let alpha = randomPercentage
+            let result = HSLColor(hue: hue, saturation: saturation, lightness: lightness, alpha: alpha)!
+            XCTAssertEqual(hue, result.rawValue.hue)
+            XCTAssertEqual(saturation, result.rawValue.saturation)
+            XCTAssertEqual(lightness, result.rawValue.lightness)
+            XCTAssertEqual(alpha, result.alpha)
+        }
+    }
+    func testOfColorCreateMethod() {
+        do {
+            let hue = randomDegree
+            let saturation = randomPercentage
+            let lightness = randomPercentage
+            let result = Color.create(hue: hue, saturation: saturation, lightness: lightness)!
+            let expected = HSLColor(hue: hue, saturation: saturation, lightness: lightness, alpha: percentageMax)!
+            XCTAssertEqual(expected, result)
         }
         do {
             let hue = randomDegree
@@ -261,10 +428,39 @@ class HSLColorColorConversionTests: XCTestCase, ColorTestSpec {
             let lightness = randomPercentage
             let alpha = randomPercentage
             let result = Color.create(hue: hue, saturation: saturation, lightness: lightness, alpha: alpha)!
-            XCTAssertEqual(hue, result.rawValue.hue)
-            XCTAssertEqual(saturation, result.rawValue.saturation)
-            XCTAssertEqual(lightness, result.rawValue.lightness)
-            XCTAssertEqual(alpha, result.alpha)
+            let expected = HSLColor(hue: hue, saturation: saturation, lightness: lightness, alpha: alpha)!
+            XCTAssertEqual(expected, result)
+        }
+        do {
+            XCTAssertNil(Color.create(hue: randomDegree, saturation: randomPercentage, lightness: percentageMax + 1))
+            XCTAssertNil(Color.create(hue: randomDegree, saturation: randomPercentage, lightness: percentageMin - 1))
+            XCTAssertNil(Color.create(hue: randomDegree, saturation: randomPercentage, lightness: randomPercentage, alpha: percentageMax + 1))
+            XCTAssertNil(Color.create(hue: randomDegree, saturation: randomPercentage, lightness: randomPercentage, alpha: percentageMin - 1))
+        }
+    }
+    func testOfColorTruncateMethod() {
+        do {
+            let hue = randomDegree
+            let saturation = randomPercentage
+            let lightness = randomPercentage
+            let result = Color.truncate(hue: hue, saturation: saturation, lightness: lightness)
+            let expected = Color.create(hue: hue, saturation: saturation, lightness: lightness, alpha: percentageMax)!
+            XCTAssertEqual(expected, result)
+        }
+        do {
+            let hue = randomDegree
+            let saturation = randomPercentage
+            let lightness = randomPercentage
+            let alpha = randomPercentage
+            let result = Color.truncate(hue: hue, saturation: saturation, lightness: lightness, alpha: alpha)
+            let expected = Color.create(hue: hue, saturation: saturation, lightness: lightness, alpha: alpha)!
+            XCTAssertEqual(expected, result)
+        }
+        do {
+            XCTAssertNotNil(Color.truncate(hue: randomDegree, saturation: randomPercentage, lightness: percentageMax + 1))
+            XCTAssertNotNil(Color.truncate(hue: randomDegree, saturation: randomPercentage, lightness: percentageMin - 1))
+            XCTAssertNotNil(Color.truncate(hue: randomDegree, saturation: randomPercentage, lightness: randomPercentage, alpha: percentageMax + 1))
+            XCTAssertNotNil(Color.truncate(hue: randomDegree, saturation: randomPercentage, lightness: randomPercentage, alpha: percentageMin - 1))
         }
     }
     func testOfPropToIntRGBData() {
