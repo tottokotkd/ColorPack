@@ -87,6 +87,23 @@ extension IntRGBColor: ColorManipulationProtocol {
             return (red, green, blue)
         }
     }
+    public func merge(_ rhs: IntRGBColor, ratio: Percentage) -> IntRGBColor {
+        let ratioValue = ratio.asPercentage
+        if ratioValue == percentageMin {
+            return self
+        } else if ratioValue == percentageMax {
+            return rhs
+        }
+        let rightRatio = ratioValue / percentageMax
+        let leftRatio = 1 - rightRatio
+        return merge(rhs, transformColor: { (left, right) in
+            if left == right {
+                return left
+            } else {
+                return Int(Double(left) * leftRatio + Double(right) * rightRatio).asRGB
+            }
+        })!
+    }
 }
 
 extension IntRGBColor: Equatable {

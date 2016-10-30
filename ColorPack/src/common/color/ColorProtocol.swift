@@ -46,6 +46,7 @@ public protocol ColorManipulationProtocol: ColorProtocol {
     func map(_ transform: (T) throws -> T) rethrows -> Self?
     func map(transformAlpha: (Percentage) throws -> Percentage) rethrows -> Self?
     func merge(_ rhs: Self, _ transform: (T, T) throws -> T) rethrows -> Self?
+    func merge(_ rhs: Self, ratio: Percentage) -> Self
     func merge(_ rhs: Self, transformAlpha: (Percentage, Percentage) throws -> Percentage) rethrows -> Self?
     func withAlpha(_ alpha: Percentage) -> Self?
 }

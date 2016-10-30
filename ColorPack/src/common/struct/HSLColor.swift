@@ -43,7 +43,32 @@ public struct HSLColor: HSLColorProtocol, ColorStructConvertor {
     }
 }
 
-extension HSLColor: ColorManipulationProtocol {}
+extension HSLColor: ColorManipulationProtocol {
+    public func merge(_ rhs: HSLColor, ratio: Percentage) -> HSLColor {
+        let ratioValue = ratio.asPercentage
+        if ratioValue == percentageMin {
+            return self
+        } else if ratioValue == percentageMax {
+            return rhs
+        }
+        func getHueGap(from: Degree, to: Degree) -> Degree {
+            let ascGap = (to - from).asDegree
+            return ascGap < degreeMax / 2 ? ascGap : (ascGap - degreeMax)
+        }
+        let rightRatio = ratioValue / percentageMax
+        let leftRatio = 1 - rightRatio
+        return  merge(rhs) { (left: HSLData, right: HSLData) in
+            let s = left.saturation == right.saturation ? left.saturation : (left.saturation * leftRatio + right.saturation * rightRatio).asPercentage
+            let l = left.lightness == right.lightness ? left.lightness :(left.lightness * leftRatio + right.lightness * rightRatio).asPercentage
+            if let leftHue = left.hue, let rightHue = right.hue {
+                let gap = getHueGap(from: leftHue, to: rightHue)
+                let h = leftHue + gap * rightRatio
+                return (h, s, l)
+            } else  {
+                return (nil, s, l)
+            }}!
+    }
+}
 
 extension HSLColor: ColorConversionProtocol {
     public var toInverse: HSLColor {

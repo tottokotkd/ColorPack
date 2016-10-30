@@ -14,6 +14,7 @@ protocol ManipulationTestSpec: TestHelper {
     func testOfMapAlpha()
     func testOfMerge()
     func testOfMergeAlpha()
+    func testOfMergeWithRatio()
     func testOfWithAlpha()
 }
 
@@ -155,6 +156,14 @@ class IntRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             let result = color1.merge(color2, transformAlpha: {_ in percentageMax + 1})
             XCTAssertNil(result)
         }
+    }
+    func testOfMergeWithRatio() {
+        let color1 = Color.create(red: 100, green: 200, blue: 250)!
+        let color2 = Color.create(red: 200, green: 250, blue: 50)!
+        let ratio = 40.0
+        let result = color1.merge(color2, ratio: ratio)
+        let expected = Color.create(red: 140, green: 220, blue: 170)
+        XCTAssertEqual(result, expected)
     }
     func testOfWithAlpha() {
         testOfWithAlphaImpl(color: randomIntRGBColor)
@@ -346,6 +355,14 @@ class DoubleRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             XCTAssertNil(result)
         }
     }
+    func testOfMergeWithRatio() {
+        let color1 = Color.create(red: 20.0, green: 80.0, blue: 100.0)!
+        let color2 = Color.create(red: 80.0, green: 100.0, blue: 20.0)!
+        let ratio = 40.0
+        let result = color1.merge(color2, ratio: ratio)
+        let expected = Color.create(red: 44.0, green: 88.0, blue: 68.0)
+        XCTAssertEqual(result, expected)
+    }
     func testOfWithAlpha() {
         testOfWithAlphaImpl(color: randomDoubleRGBColor)
     }
@@ -412,7 +429,7 @@ class DoubleRGBColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
 }
 
 /*
-    HSL RGB Color
+    HSL Color
  */
 class HSLColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
     func testOfMap() {
@@ -536,10 +553,65 @@ class HSLColorManipulationOperatorSpec: XCTestCase, ManipulationTestSpec {
             XCTAssertNil(result)
         }
     }
+    func testOfMergeWithRatio() {
+        do {
+            let color1 = Color.create(hue: 30, saturation: 70, lightness: 60)!
+            let color2 = Color.create(hue: 10, saturation: 90, lightness: 30)!
+            let ratio = 40.0
+            let result = color1.merge(color2, ratio: ratio)
+            let expected = Color.create(hue: 22, saturation: 78, lightness: 48)!
+            XCTAssertEqual(result, expected)
+        }
+        do {
+            let color1 = Color.create(hue: 30, saturation: 70, lightness: 60)!
+            let color2 = Color.create(hue: 30, saturation: 90, lightness: 30)!
+            let ratio = 40.0
+            let result = color1.merge(color2, ratio: ratio)
+            let expected = Color.create(hue: 30, saturation: 78, lightness: 48)!
+            XCTAssertEqual(result, expected)
+        }
+        do {
+            let color1 = Color.create(hue: 30, saturation: 70, lightness: 60)!
+            let color2 = Color.create(hue: 130, saturation: 90, lightness: 30)!
+            let ratio = 40.0
+            let result = color1.merge(color2, ratio: ratio)
+            let expected = Color.create(hue: 70, saturation: 78, lightness: 48)!
+            XCTAssertEqual(result, expected)
+        }
+        do {
+            let color1 = Color.create(hue: 30, saturation: 70, lightness: 60)!
+            let color2 = Color.create(hue: 230, saturation: 90, lightness: 30)!
+            let ratio = 40.0
+            let result = color1.merge(color2, ratio: ratio)
+            let expected = Color.create(hue: 326, saturation: 78, lightness: 48)!
+            XCTAssertEqual(result, expected)
+        }
+        do {
+            let color1 = Color.create(hue: 330, saturation: 70, lightness: 60)!
+            let color2 = Color.create(hue: 30, saturation: 90, lightness: 30)!
+            let ratio = 40.0
+            let result = color1.merge(color2, ratio: ratio)
+            let expected = Color.create(hue: 354, saturation: 78, lightness: 48)!
+            XCTAssertEqual(result, expected)
+        }
+        do {
+            let color1 = Color.create(hue: 330, saturation: 70, lightness: 60)!
+            let color2 = Color.create(hue: 130, saturation: 90, lightness: 30)!
+            let ratio = 40.0
+            let result = color1.merge(color2, ratio: ratio)
+            let expected = Color.create(hue: 34, saturation: 78, lightness: 48)!
+            XCTAssertEqual(result, expected)
+        }
+        do {
+            let color1 = Color.create(hue: 330, saturation: 70, lightness: 60)!
+            let color2 = Color.create(hue: 230, saturation: 90, lightness: 30)!
+            let ratio = 40.0
+            let result = color1.merge(color2, ratio: ratio)
+            let expected = Color.create(hue: 290, saturation: 78, lightness: 48)!
+            XCTAssertEqual(result, expected)
+        }
+    }
     func testOfWithAlpha() {
         testOfWithAlphaImpl(color: randomHSLColor)
     }
 }
-
-
- 
