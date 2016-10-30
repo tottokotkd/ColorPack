@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		921296BE1DC4782000D46065 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B474AF1DBEDE7B0017452B /* UIColor.swift */; };
 		921296BF1DC4782100D46065 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B474AF1DBEDE7B0017452B /* UIColor.swift */; };
+		921296C11DC5BCE000D46065 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B2973F1DC334E700A95AEB /* TestHelper.swift */; };
+		921296C21DC5BCE500D46065 /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B297511DC3451700A95AEB /* ColorTests.swift */; };
+		921296C31DC5BCE500D46065 /* CalculationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B297491DC33C1A00A95AEB /* CalculationTests.swift */; };
+		921296C41DC5BCE500D46065 /* ManipulationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B297431DC33BCD00A95AEB /* ManipulationTests.swift */; };
+		921296C51DC5BCE500D46065 /* ColorSchemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B297541DC3454F00A95AEB /* ColorSchemeTests.swift */; };
+		921296C61DC5BCE500D46065 /* OperatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922377231DC3160300C93C0C /* OperatorTests.swift */; };
+		921296C71DC5BCE900D46065 /* ColorModelConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B2975F1DC36D1500A95AEB /* ColorModelConversionTests.swift */; };
+		921296C81DC5BCED00D46065 /* FactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B297591DC34AE400A95AEB /* FactoryTests.swift */; };
 		922377171DC303E300C93C0C /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922377161DC303E300C93C0C /* Function.swift */; };
 		922377191DC306D100C93C0C /* FactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929504051DC2D8CF00E59F57 /* FactoryProtocol.swift */; };
 		9223771A1DC306D100C93C0C /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B4750E1DBF82DB0017452B /* Hex.swift */; };
@@ -768,6 +776,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				921296C81DC5BCED00D46065 /* FactoryTests.swift in Sources */,
+				921296C71DC5BCE900D46065 /* ColorModelConversionTests.swift in Sources */,
+				921296C11DC5BCE000D46065 /* TestHelper.swift in Sources */,
+				921296C61DC5BCE500D46065 /* OperatorTests.swift in Sources */,
+				921296C51DC5BCE500D46065 /* ColorSchemeTests.swift in Sources */,
+				921296C21DC5BCE500D46065 /* ColorTests.swift in Sources */,
+				921296C41DC5BCE500D46065 /* ManipulationTests.swift in Sources */,
+				921296C31DC5BCE500D46065 /* CalculationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
