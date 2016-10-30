@@ -1,24 +1,14 @@
 # Swift Color Pack
-
 swift color utility & library
 
 ## 1. GET
-
-### (1) manual [classical]
-click `clone or download` 
-
-### (2) Carthage [recommended]
-
 1. add ColorPack to `Cartfile`
-
     ```
     github "tottokotkd/ColorPack" "2.0"
     ```
-
 2. `carthage update`
 
 ## 2. HOW TO USE
-
 please check ColorPack.playground
 
 ## 3. LICENSE
@@ -31,6 +21,7 @@ MIT
 * HSL Color data introduced
 * color conversion available (HSL ONLY)
 * experimental: calculation, manipulation, operators and tvOS / watchOS support 
+
 ### v 1.0 -> 1.1
 * RGB can be specified with Double values
 * 'Color' struct is removed: `Color.init?()` is changed to `Color.create()`
