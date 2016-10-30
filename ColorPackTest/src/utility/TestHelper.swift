@@ -47,6 +47,7 @@ extension TestHelper {
         XCTAssertEqual(a, b.alpha)
     }
     var randomRGB: RGB {return RGB(arc4random_uniform(0xFF))}
+    var randomHex: Int {return RGB(arc4random_uniform(0xFFFFFF))}
     var randomPercentage: Percentage {return Double(arc4random_uniform(100000)) / Double(100000)}
     var randomDegree: Degree? {
         let v =  Double(360 * arc4random_uniform(100000)) / Double(100000)

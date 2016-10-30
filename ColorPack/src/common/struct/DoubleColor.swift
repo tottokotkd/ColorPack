@@ -76,6 +76,17 @@ extension DoubleRGBColor: ColorManipulationProtocol {
             return (red, green, blue)
         }
     }
+    public func merge(_ rhs: DoubleRGBColor, ratio: Percentage) -> DoubleRGBColor {
+        let ratioValue = ratio.asPercentage
+        if ratioValue == percentageMin {
+            return self
+        } else if ratioValue == percentageMax {
+            return rhs
+        }
+        let rightRatio = ratioValue / percentageMax
+        let leftRatio = 1 - rightRatio
+        return merge(rhs, transformColor: {$0 == $1 ? $0 : ($0 * leftRatio + $1 * rightRatio).asPercentage})!
+    }
 }
 
 extension DoubleRGBColor: Equatable {
