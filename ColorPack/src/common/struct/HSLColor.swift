@@ -49,7 +49,7 @@ extension HSLColor: ColorManipulationProtocol {
         if ratioValue == percentageMin {
             return self
         } else if ratioValue == percentageMax {
-            return rhs
+            return rhs.map(transformAlpha: {_ in alpha})!
         }
         func getHueGap(from: Degree, to: Degree) -> Degree {
             let ascGap = (to - from).asDegree

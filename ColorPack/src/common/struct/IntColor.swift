@@ -92,7 +92,7 @@ extension IntRGBColor: ColorManipulationProtocol {
         if ratioValue == percentageMin {
             return self
         } else if ratioValue == percentageMax {
-            return rhs
+            return rhs.map(transformAlpha: {_ in alpha})!
         }
         let rightRatio = ratioValue / percentageMax
         let leftRatio = 1 - rightRatio
