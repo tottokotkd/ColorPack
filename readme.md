@@ -4,7 +4,7 @@ swift color utility & library
 ## 1. GET
 1. add ColorPack to `Cartfile`
     ```
-    github "tottokotkd/ColorPack" "2.0"
+    github "tottokotkd/ColorPack" "2.1"
     ```
 2. `carthage update`
 
