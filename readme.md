@@ -15,6 +15,9 @@ please check ColorPack.playground
 MIT
 
 ## 4. VERSION
+### 2.0 -> 2.1
+* ratio merge (experimental)
+
 ### 1.1 -> 2.0
 * totally remade
 * 'Double RGB' remains, but **Percentage parameters are FROM 0% to 100% (NOT 0.0 to 1.0)** 
