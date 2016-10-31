@@ -4,7 +4,7 @@ swift color utility & library
 ## 1. GET
 1. add ColorPack to `Cartfile`
     ```
-    github "tottokotkd/ColorPack" "2.1"
+    github "tottokotkd/ColorPack" "2.2"
     ```
 2. `carthage update`
 
@@ -15,17 +15,20 @@ please check ColorPack.playground
 MIT
 
 ## 4. VERSION
-### 2.0 -> 2.1
+### 2.2
+* rename: 'toTriad' -> 'toTriadic'
+
+### 2.1
 * ratio merge (experimental)
 
-### 1.1 -> 2.0
+### 2.0
 * totally remade
 * 'Double RGB' remains, but **Percentage parameters are FROM 0% to 100% (NOT 0.0 to 1.0)** 
 * HSL Color data introduced
 * color conversion available (HSL ONLY)
 * experimental: calculation, manipulation, operators and tvOS / watchOS support 
 
-### 1.0 -> 1.1
+### 1.1
 * RGB can be specified with Double values
 * 'Color' struct is removed: `Color.init?()` is changed to `Color.create()`
 * factory methods renamed: , `Color.RGB`, `.Hex` and `.WebSafe` are changed to `.rgb`, `.hex`, `.webSafe`

@@ -27,8 +27,8 @@ color.toAnalogous.lower.toUIColor
  ### (4) Triad Colors
  */
 color.toUIColor
-color.toTriad.upper.toUIColor
-color.toTriad.lower.toUIColor
+color.toTriadic.upper.toUIColor
+color.toTriadic.lower.toUIColor
 /*:
  ### (5) Split Complementary Colors
  */
