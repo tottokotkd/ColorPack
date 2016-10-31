@@ -69,16 +69,16 @@ class HSLColorSchemeTestSpec: XCTestCase, ColorSchemeTestSpec {
             let value = Color.create(hue: 120, saturation: 30, lightness: 65)!
             let expected1 = Color.create(hue: 240, saturation: 30, lightness: 65)!
             let expected2 = Color.create(hue: 0, saturation: 30, lightness: 65)!
-            let result = value.toTriad
+            let result = value.toTriadic
             assertEqualColor(expected1, result.upper)
             assertEqualColor(expected2, result.lower)
         }
         do {
             let value = Color.create(hue: 120, saturation: 30, lightness: 65)!
-            let result1 = value.toTriad.upper.toTriad.lower
-            let result2 = value.toTriad.lower.toTriad.upper
-            let result3 = value.toTriad.upper.toTriad.upper.toTriad.upper
-            let result4 = value.toTriad.lower.toTriad.lower.toTriad.lower
+            let result1 = value.toTriadic.upper.toTriadic.lower
+            let result2 = value.toTriadic.lower.toTriadic.upper
+            let result3 = value.toTriadic.upper.toTriadic.upper.toTriadic.upper
+            let result4 = value.toTriadic.lower.toTriadic.lower.toTriadic.lower
             assertEqualColor(value, result1)
             XCTAssertEqual(value, result2)
             assertEqualColor(value, result3)

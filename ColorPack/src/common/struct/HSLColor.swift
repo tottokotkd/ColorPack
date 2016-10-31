@@ -95,7 +95,7 @@ extension HSLColor: ColorConversionProtocol {
         })!
         return (upper, lower)
     }
-    public var toTriad: (upper: HSLColor, lower: HSLColor) {
+    public var toTriadic: (upper: HSLColor, lower: HSLColor) {
         let upper = map({(hue: Degree?, saturation: Percentage, lightness: Percentage) in
             let newHue = hue.map{($0 + (degreeMax / 3)).asDegree}
             return (newHue, saturation, lightness)

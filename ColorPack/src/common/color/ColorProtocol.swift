@@ -55,7 +55,7 @@ public protocol ColorConversionProtocol: ColorProtocol {
     var toInverse: Self {get}
     var toComplementary: Self {get}
     var toAnalogous: (upper: Self, lower: Self) {get}
-    var toTriad: (upper: Self, lower: Self) {get}
+    var toTriadic: (upper: Self, lower: Self) {get}
     var toSplitComplementary: (upper: Self, lower: Self) {get}
 }
 
