@@ -15,14 +15,14 @@ please check ColorPack.playground
 MIT
 
 ## 4. VERSION
-### v 1.1 -> 2.0
+### 1.1 -> 2.0
 * totally remade
 * 'Double RGB' remains, but **Percentage parameters are FROM 0% to 100% (NOT 0.0 to 1.0)** 
 * HSL Color data introduced
 * color conversion available (HSL ONLY)
 * experimental: calculation, manipulation, operators and tvOS / watchOS support 
 
-### v 1.0 -> 1.1
+### 1.0 -> 1.1
 * RGB can be specified with Double values
 * 'Color' struct is removed: `Color.init?()` is changed to `Color.create()`
 * factory methods renamed: , `Color.RGB`, `.Hex` and `.WebSafe` are changed to `.rgb`, `.hex`, `.webSafe`
